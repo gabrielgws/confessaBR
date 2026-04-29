@@ -82,19 +82,19 @@
 
 ### Implementation for User Story 1
 
-- [ ] T039 [P] [US1] Define auth, profile, session, and preference request/response types in types/auth.ts
-- [ ] T040 [P] [US1] Implement auth REST methods for register, login, logout, and current user in services/auth.service.ts
-- [ ] T041 [P] [US1] Implement profile and preference REST methods in services/profile.service.ts
-- [ ] T042 [US1] Implement useAuthSession hook for login, register, logout, visitor mode, and bootstrap in features/auth/use-auth-session.ts
-- [ ] T043 [US1] Implement useProfile hook for profile, privacy, and notification preference updates in features/profile/use-profile.ts
-- [ ] T044 [US1] Replace starter landing route with ConfessaBR landing and visitor/auth entry points in app/index.tsx
-- [ ] T045 [US1] Implement login screen with loading, error, empty, and success state handling in app/(auth)/login.tsx
-- [ ] T046 [US1] Implement register screen with username uniqueness error handling in app/(auth)/register.tsx
-- [ ] T047 [US1] Implement authenticated home shell with visitor guard redirect in app/(tabs)/home.tsx
-- [ ] T048 [US1] Implement profile screen with edit profile, privacy, and notification preference sections in app/(tabs)/profile.tsx
-- [ ] T049 [US1] Implement settings screen with sign out and privacy preference access in app/settings.tsx
-- [ ] T050 [US1] Validate visitor access is limited to landing and authentication screens in features/auth/route-guards.ts
-- [ ] T051 [US1] Document manual US1 verification steps in specs/001-confessabr-social-mvp/quickstart.md
+- [X] T039 [P] [US1] Define auth, profile, session, and preference request/response types in types/auth.ts
+- [X] T040 [P] [US1] Implement auth REST methods for register, login, logout, and current user in services/auth.service.ts
+- [X] T041 [P] [US1] Implement profile and preference REST methods in services/profile.service.ts
+- [X] T042 [US1] Implement useAuthSession hook for login, register, logout, visitor mode, and bootstrap in features/auth/use-auth-session.ts
+- [X] T043 [US1] Implement useProfile hook for profile, privacy, and notification preference updates in features/profile/use-profile.ts
+- [X] T044 [US1] Replace starter landing route with ConfessaBR landing and visitor/auth entry points in app/index.tsx
+- [X] T045 [US1] Implement login screen with loading, error, empty, and success state handling in app/(auth)/login.tsx
+- [X] T046 [US1] Implement register screen with username uniqueness error handling in app/(auth)/register.tsx
+- [X] T047 [US1] Implement authenticated home shell with visitor guard redirect in app/(tabs)/home.tsx
+- [X] T048 [US1] Implement profile screen with edit profile, privacy, and notification preference sections in app/(tabs)/profile.tsx
+- [X] T049 [US1] Implement settings screen with sign out and privacy preference access in app/settings.tsx
+- [X] T050 [US1] Validate visitor access is limited to landing and authentication screens in features/auth/route-guards.ts
+- [X] T051 [US1] Document manual US1 verification steps in specs/001-confessabr-social-mvp/quickstart.md
 
 **Checkpoint**: US1 independently functional.
 
@@ -108,17 +108,17 @@
 
 ### Implementation for User Story 2
 
-- [ ] T052 [P] [US2] Define anonymous message, reveal, archive, share, and send payload types in types/inbox.ts
-- [ ] T053 [P] [US2] Implement inbox and direct message REST methods in services/inbox.service.ts
-- [ ] T054 [P] [US2] Implement payment capability lookup used by reveal flow in services/payments.service.ts
-- [ ] T055 [US2] Implement inbox query and mutation hooks with cache invalidation in features/inbox/use-inbox.ts
-- [ ] T056 [US2] Implement direct anonymous message composer logic in features/inbox/use-send-message.ts
-- [ ] T057 [US2] Implement reveal eligibility hook that respects send-time consent and payment confirmation in features/inbox/use-reveal-sender.ts
-- [ ] T058 [US2] Implement inbox list screen with loading, error, empty, and success states in app/(tabs)/inbox.tsx
-- [ ] T059 [US2] Implement inbox message detail, archive, report, share, and reveal actions in app/(modals)/message-detail.tsx
-- [ ] T060 [US2] Implement anonymous message compose modal in app/(modals)/send-message.tsx
-- [ ] T061 [US2] Ensure safe share payload excludes sender identity and sensitive metadata in features/inbox/share-message.ts
-- [ ] T062 [US2] Validate US2 privacy and payment behavior against contracts/rest-api.md in specs/001-confessabr-social-mvp/quickstart.md
+- [X] T052 [P] [US2] Define anonymous message, reveal, archive, share, and send payload types in types/inbox.ts
+- [X] T053 [P] [US2] Implement inbox and direct message REST methods in services/inbox.service.ts
+- [X] T054 [P] [US2] Implement payment capability lookup used by reveal flow in services/payments.service.ts
+- [X] T055 [US2] Implement inbox query and mutation hooks with cache invalidation in features/inbox/use-inbox.ts
+- [X] T056 [US2] Implement direct anonymous message composer logic in features/inbox/use-send-message.ts
+- [X] T057 [US2] Implement reveal eligibility hook that respects send-time consent and payment confirmation in features/inbox/use-reveal-sender.ts
+- [X] T058 [US2] Implement inbox list screen with loading, error, empty, and success states in app/(tabs)/inbox.tsx
+- [X] T059 [US2] Implement inbox message detail, archive, report, share, and reveal actions in app/(modals)/message-detail.tsx
+- [X] T060 [US2] Implement anonymous message compose modal in app/(modals)/send-message.tsx
+- [X] T061 [US2] Ensure safe share payload excludes sender identity and sensitive metadata in features/inbox/share-message.ts
+- [X] T062 [US2] Validate US2 privacy and payment behavior against contracts/rest-api.md in specs/001-confessabr-social-mvp/quickstart.md
 
 **Checkpoint**: US2 independently functional and privacy checked.
 

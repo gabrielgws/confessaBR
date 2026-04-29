@@ -101,6 +101,42 @@ Manual verification checklist:
   aggregation by region, and radar honors distance/type filters.
 - Every primary screen has loading, error, empty, and success states.
 
+### US1 Manual Verification - Join And Manage Identity
+
+1. Open the app at the landing screen and confirm only entry actions are visible:
+   sign in, create account, and visitor mode.
+2. Continue as visitor and confirm authenticated tabs redirect back to landing
+   or show visitor restriction feedback.
+3. Register with a unique username, display name, password, and matching
+   confirmation; confirm the app navigates to the authenticated home tab.
+4. Attempt registration with a backend-rejected duplicate username and confirm
+   the username field shows the backend validation message.
+5. Sign in with an existing account and confirm profile data loads from
+   `/api/me`.
+6. Edit display name and bio from the profile tab; confirm the profile screen
+   updates after the backend response.
+7. Toggle privacy and notification preferences from profile/settings and confirm
+   the UI waits for backend success.
+8. Sign out from settings and confirm token/session state is cleared.
+
+### US2 Manual Verification - Anonymous Inbox And Direct Messages
+
+1. Sign in, open the inbox tab, and confirm loading, error, empty, and populated
+   states are represented.
+2. Send an anonymous message from the compose modal to a target username and
+   confirm no sender identity is placed in route params or share text.
+3. Open a message detail screen and confirm only sender alias, body, timestamps,
+   reveal status, and safe actions are visible.
+4. Archive a message and confirm the inbox list is invalidated/refreshed.
+5. Submit a report reason and confirm duplicate-report or validation errors are
+   surfaced from backend reason codes.
+6. Share a message and confirm the payload excludes sender identity, moderation
+   metadata, payment internals, exact location, and raw IDs.
+7. Attempt sender reveal when consent or payment is missing and confirm the UI
+   keeps reveal disabled or shows the backend rejection.
+8. Confirm reveal can only run when message-specific reveal consent and a
+   confirmed `sender_reveal` capability for the same message are present.
+
 ## 7. Constitution Checks Before Implementation Completion
 
 - No manual `StyleSheet` usage in new ConfessaBR code.

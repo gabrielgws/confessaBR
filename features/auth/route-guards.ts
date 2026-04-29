@@ -2,7 +2,7 @@ import type { Href } from 'expo-router';
 
 import { useAuthStore } from '@/store/auth.store';
 
-const visitorAllowedRoutes = new Set(['/login', '/register', '/']);
+const visitorAllowedRoutes = new Set(['/', '/login', '/register', '/(auth)/login', '/(auth)/register']);
 
 export function isVisitorAllowedRoute(pathname: string): boolean {
   return visitorAllowedRoutes.has(pathname);
