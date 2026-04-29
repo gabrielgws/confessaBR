@@ -137,6 +137,43 @@ Manual verification checklist:
 8. Confirm reveal can only run when message-specific reveal consent and a
    confirmed `sender_reveal` capability for the same message are present.
 
+### US3 Manual Verification - Rooms And Room Feeds
+
+1. Sign in and open the rooms tab; confirm loading, error, empty, and populated
+   states are represented.
+2. Create a room and confirm backend-owned visibility, join code, and permission
+   behavior appear in the returned room data.
+3. Join a room by code with another account and confirm invalid codes surface a
+   backend validation or authorization error.
+4. Open a room detail route and confirm feed, member list, leave action, poll
+   creation entry point, and moderator-only notice render from backend
+   permissions.
+5. Post a feed message and confirm the rendered item shows only the anonymous
+   sender alias, never a user identity.
+6. Report a feed item and confirm duplicate-report or permission errors are
+   shown from backend reason codes.
+7. Leave the room and confirm the room list refreshes and posting access is no
+   longer available according to backend membership state.
+8. Confirm US1-US3 together form the first MVP increment: account/session,
+   anonymous inbox, and rooms all pass without direct API calls from route UI.
+
+### US4 Manual Verification - Positive Polls In Rooms
+
+1. Open a room and create a poll using one of the positive categories; confirm
+   custom questions over the UI limit are blocked before submit and backend
+   policy errors still surface if returned.
+2. Open a poll detail route from the room poll entry point and verify invite,
+   accept/refuse, vote, close, result, and safe-share states are visible.
+3. Invite participants and confirm backend eligibility errors are shown.
+4. Accept and refuse invitations using backend invitation IDs and confirm the
+   response state updates.
+5. Vote once on an open poll and confirm a second vote is blocked by the UI or
+   rejected by backend with `POLL_ALREADY_VOTED`.
+6. Close the poll and confirm results load according to backend visibility
+   rules.
+7. Share poll results and confirm the payload excludes sensitive identity,
+   moderation, payment, exact location, and raw private metadata.
+
 ## 7. Constitution Checks Before Implementation Completion
 
 - No manual `StyleSheet` usage in new ConfessaBR code.

@@ -41,6 +41,8 @@ export default function RootLayout() {
           <Stack.Screen name="(auth)" options={{ headerShown: false }} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="(modals)" options={{ presentation: 'modal', headerShown: false }} />
+          <Stack.Screen name="rooms/[id]" options={{ title: 'Sala' }} />
+          <Stack.Screen name="polls/[id]" options={{ title: 'Poll' }} />
           <Stack.Screen name="settings" options={{ title: 'Configuracoes' }} />
         </Stack>
         <StatusBar style="auto" />

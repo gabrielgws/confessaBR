@@ -24,10 +24,12 @@ export const queryKeys = {
     detail: (roomId: string) => [...queryKeys.rooms.all, roomId] as const,
     members: (roomId: string) => [...queryKeys.rooms.detail(roomId), 'members'] as const,
     feed: (roomId: string) => [...queryKeys.rooms.detail(roomId), 'feed'] as const,
+    polls: (roomId: string) => [...queryKeys.rooms.detail(roomId), 'polls'] as const,
   },
   polls: {
     all: ['polls'] as const,
     detail: (pollId: string) => [...queryKeys.polls.all, pollId] as const,
+    results: (pollId: string) => [...queryKeys.polls.detail(pollId), 'results'] as const,
   },
   notifications: ['notifications'] as const,
   radar: ['radar'] as const,

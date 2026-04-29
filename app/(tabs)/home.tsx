@@ -1,4 +1,5 @@
 import { Link, router } from 'expo-router';
+import type { Href } from 'expo-router';
 import { useEffect } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 
@@ -41,6 +42,9 @@ export default function HomeScreen() {
         </Link>
         <Link href="/(tabs)/inbox" asChild>
           <Button title="Abrir inbox" variant="secondary" />
+        </Link>
+        <Link href={'/(tabs)/rooms' as Href} asChild>
+          <Button title="Ver salas" variant="ghost" />
         </Link>
       </View>
     </ScrollView>

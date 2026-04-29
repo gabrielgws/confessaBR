@@ -132,17 +132,17 @@
 
 ### Implementation for User Story 3
 
-- [ ] T063 [P] [US3] Define room, membership, feed item, join code, and room permission types in types/rooms.ts
-- [ ] T064 [P] [US3] Implement room and room feed REST methods in services/rooms.service.ts
-- [ ] T065 [P] [US3] Implement basic moderation report method for room feed reports in services/moderation.service.ts
-- [ ] T066 [US3] Implement room list, create, join, leave, member, and feed hooks in features/rooms/use-rooms.ts
-- [ ] T067 [US3] Implement room feed composer and report hooks in features/rooms/use-room-feed.ts
-- [ ] T068 [US3] Implement rooms tab with loading, error, empty, and success states in app/(tabs)/rooms.tsx
-- [ ] T069 [US3] Implement create room modal in app/(modals)/create-room.tsx
-- [ ] T070 [US3] Implement join room by code modal in app/(modals)/join-room.tsx
-- [ ] T071 [US3] Implement room detail route with feed, members, leave, and permission-gated moderation controls in app/rooms/[id].tsx
-- [ ] T072 [US3] Ensure room feed messages render anonymous sender aliases only in features/rooms/room-feed-item.tsx
-- [ ] T073 [US3] Validate first MVP readiness for US1-US3 in specs/001-confessabr-social-mvp/quickstart.md
+- [X] T063 [P] [US3] Define room, membership, feed item, join code, and room permission types in types/rooms.ts
+- [X] T064 [P] [US3] Implement room and room feed REST methods in services/rooms.service.ts
+- [X] T065 [P] [US3] Implement basic moderation report method for room feed reports in services/moderation.service.ts
+- [X] T066 [US3] Implement room list, create, join, leave, member, and feed hooks in features/rooms/use-rooms.ts
+- [X] T067 [US3] Implement room feed composer and report hooks in features/rooms/use-room-feed.ts
+- [X] T068 [US3] Implement rooms tab with loading, error, empty, and success states in app/(tabs)/rooms.tsx
+- [X] T069 [US3] Implement create room modal in app/(modals)/create-room.tsx
+- [X] T070 [US3] Implement join room by code modal in app/(modals)/join-room.tsx
+- [X] T071 [US3] Implement room detail route with feed, members, leave, and permission-gated moderation controls in app/rooms/[id].tsx
+- [X] T072 [US3] Ensure room feed messages render anonymous sender aliases only in features/rooms/room-feed-item.tsx
+- [X] T073 [US3] Validate first MVP readiness for US1-US3 in specs/001-confessabr-social-mvp/quickstart.md
 
 **Checkpoint**: First shippable MVP increment complete when US1-US3 pass validation.
 
@@ -156,14 +156,14 @@
 
 ### Implementation for User Story 4
 
-- [ ] T074 [P] [US4] Define poll, positive category, invitation, vote, result, and safe share types in types/polls.ts
-- [ ] T075 [P] [US4] Implement poll REST methods in services/polls.service.ts
-- [ ] T076 [US4] Implement positive poll category and custom text validation adapters in features/polls/poll-rules.ts
-- [ ] T077 [US4] Implement poll creation, invitation, consent, voting, results, and share hooks in features/polls/use-polls.ts
-- [ ] T078 [US4] Implement create poll modal with allowed categories and limited custom text in app/(modals)/create-poll.tsx
-- [ ] T079 [US4] Implement poll detail route with invite, accept/refuse, vote, close, results, and state views in app/polls/[id].tsx
-- [ ] T080 [US4] Add room detail integration entry points for creating and opening polls in app/rooms/[id].tsx
-- [ ] T081 [US4] Validate one-vote and safe result sharing behavior in specs/001-confessabr-social-mvp/quickstart.md
+- [X] T074 [P] [US4] Define poll, positive category, invitation, vote, result, and safe share types in types/polls.ts
+- [X] T075 [P] [US4] Implement poll REST methods in services/polls.service.ts
+- [X] T076 [US4] Implement positive poll category and custom text validation adapters in features/polls/poll-rules.ts
+- [X] T077 [US4] Implement poll creation, invitation, consent, voting, results, and share hooks in features/polls/use-polls.ts
+- [X] T078 [US4] Implement create poll modal with allowed categories and limited custom text in app/(modals)/create-poll.tsx
+- [X] T079 [US4] Implement poll detail route with invite, accept/refuse, vote, close, results, and state views in app/polls/[id].tsx
+- [X] T080 [US4] Add room detail integration entry points for creating and opening polls in app/rooms/[id].tsx
+- [X] T081 [US4] Validate one-vote and safe result sharing behavior in specs/001-confessabr-social-mvp/quickstart.md
 
 **Checkpoint**: US4 independently functional after room membership exists.
 
