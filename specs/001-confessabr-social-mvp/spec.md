@@ -13,7 +13,7 @@
 - Q: What can visitors access before authentication? → A: Landing and authentication only
 - Q: When is sender reveal consent determined? → A: Fixed per message at send time
 - Q: How are positive polls constrained? → A: Positive categories plus limited custom text
-- Q: What approximate-location rule should radar use? → A: Neighborhood/region only; no individual pin
+- Q: What radar discovery precision rule should radar use? → A: Neighborhood/region only; no individual user pin
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -166,7 +166,7 @@ risk and can follow core messaging and rooms.
 
 **Independent Test**: A tester can grant or deny location permission, opt in or
 out of visibility, view neighborhood or region-level nearby results within
-selected distance, and confirm non-opted-in users, individual person pins, and
+selected distance, and confirm non-opted-in users, individual user pins, and
 exact locations never appear.
 
 **Acceptance Scenarios**:
@@ -245,7 +245,7 @@ verify each supported event produces or suppresses a notification as configured.
 - **FR-024**: The system MUST notify users about new messages, poll invitations, poll results, and payment confirmations according to preferences.
 - **FR-025**: The system MUST allow users to opt into and out of proximity discovery.
 - **FR-026**: The system MUST show nearby rooms and only opted-in nearby people.
-- **FR-027**: The system MUST represent people and region-based rooms at neighborhood or region level and MUST NOT show individual person pins or exact user location.
+- **FR-027**: The system MUST represent people and region-based rooms at neighborhood or region level and MUST NOT show individual user pins or exact user location.
 - **FR-028**: The system MUST allow users to filter proximity results by type and distance.
 - **FR-029**: The system MUST allow users to create rooms based on their region.
 - **FR-030**: The system MUST allow opted-in nearby users to start anonymous temporary proximity chats.
@@ -256,7 +256,7 @@ verify each supported event produces or suppresses a notification as configured.
 ### Key Entities *(include if feature involves data)*
 
 - **User**: A person with account credentials, unique username, profile details, privacy preferences, notification preferences, and account status.
-- **Visitor Session**: A limited access session that may browse permitted surfaces but cannot create content, vote, pay, report, or start proximity chats.
+- **Visitor Session**: Visitors may access only landing and authentication surfaces. Visitors cannot access authenticated production views and cannot create, vote, pay, report, chat, or mutate data.
 - **Anonymous Message**: A direct message with content, recipient, anonymous sender reference, reveal permission, moderation status, archive status, and report status.
 - **Room**: A shared social space with name, join code, region if applicable, member list, permissions, feed content, and moderation state.
 - **Room Membership**: A relationship between a user and a room, including role, join status, and moderation permissions.
@@ -274,14 +274,14 @@ verify each supported event produces or suppresses a notification as configured.
 ### Backend Alignment *(mandatory for ConfessaBR features)*
 
 - **API Contracts**: Planning must map account, profile, inbox, messages, rooms, room feed, polls, reports, moderation, payments, notifications, radar, and proximity chat operations to backend contracts, including authentication requirements, expected success responses, and user-facing error cases.
-- **Backend-Owned Rules**: The backend owns unique usernames, visitor limits, permissions, duplicate report prevention, poll category eligibility, custom poll text limits, one-vote enforcement, payment confirmation, sender reveal eligibility, content moderation, opt-in visibility, approximate location rules, and proximity access decisions.
+- **Backend-Owned Rules**: The backend owns unique usernames, visitor limits, permissions, duplicate report prevention, poll category eligibility, custom poll text limits, one-vote enforcement, payment confirmation, sender reveal eligibility, content moderation, opt-in visibility, neighborhood/region-level radar discovery rules, and proximity access decisions.
 - **Client Responsibilities**: The client presents flows, stores non-authoritative local UI state, requests backend actions, reflects backend decisions, provides user-friendly validation feedback, and never treats local checks as final authority.
 
 ### Privacy And Security *(mandatory for sensitive features)*
 
 - **Authentication**: Registered-only actions require authenticated access. Visitor sessions must remain visibly limited.
 - **Sensitive Data**: Sender identity, payment state details, exact location, moderation metadata, and private profile data must not be exposed through shared content, notifications, logs, or navigation state.
-- **Anonymity/Consent**: Sender reveal requires message-specific send-time permission and confirmed payment. Later sender preference changes do not change the reveal decision for previously sent messages. Poll sharing requires consent-aware result presentation. Radar requires explicit opt-in and neighborhood or region-level location only, with no individual person pins. Proximity chat remains anonymous and temporary for the MVP.
+- **Anonymity/Consent**: Sender reveal requires message-specific send-time permission and confirmed payment. Later sender preference changes do not change the reveal decision for previously sent messages. Poll sharing requires consent-aware result presentation. Radar requires explicit opt-in and neighborhood or region-level location only, with no individual user pins. Proximity chat remains anonymous and temporary in the full planned feature.
 
 ## Success Criteria *(mandatory)*
 
@@ -293,7 +293,7 @@ verify each supported event produces or suppresses a notification as configured.
 - **SC-003**: 100% of shared anonymous messages and notifications omit sender identity unless reveal has been explicitly unlocked for the intended recipient.
 - **SC-004**: 100% of poll participants are prevented from voting more than once in the same poll.
 - **SC-005**: 100% of paid capabilities remain locked until payment confirmation is received.
-- **SC-006**: 100% of radar results exclude non-opted-in people and avoid individual person pins or exact user location disclosure.
+- **SC-006**: 100% of radar results exclude non-opted-in people and avoid individual user pins or exact user location disclosure.
 - **SC-007**: At least 80% of test users can create or join a room, post a room message, and report content without assistance.
 - **SC-008**: At least 80% of test users can create a poll, invite participants, vote, and understand final results without assistance.
 - **SC-009**: Every primary screen has verifiable loading, error, empty, and success states.
@@ -301,11 +301,11 @@ verify each supported event produces or suppresses a notification as configured.
 
 ## Assumptions
 
-- The MVP targets mobile users who want anonymous, privacy-preserving social interactions in Portuguese-speaking contexts.
-- The first shippable MVP increment includes P1 stories; P2 and P3 stories are planned increments that may be delivered after the first MVP release.
+- The full planned feature targets mobile users who want anonymous, privacy-preserving social interactions in Portuguese-speaking contexts.
+- The first shippable MVP increment includes only US1-US3/P1 stories; P2 and P3 stories are planned increments that may be delivered after the first US1-US3 release.
 - Account creation uses a standard credential-based flow unless a later authentication specification adds social sign-in.
-- Visitors may access only landing and authentication screens until they create an account or sign in.
+- Visitors may access only landing and authentication surfaces until they create an account or sign in.
 - Payments may unlock multiple future capabilities, but this specification treats sender reveal as the primary paid unlock.
 - Proximity discovery uses a user-selected radius from 500m to 10km and displays neighborhood or region-level location only.
-- Temporary proximity chats are not retained as durable conversation history in the MVP.
+- Temporary proximity chats are not retained as durable conversation history in the full planned feature.
 - Moderation policies and payment confirmation are controlled by backend rules and reflected by the app.

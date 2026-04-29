@@ -15,7 +15,8 @@ poll voting, consent, and proximity access.
 - Business-rule failures return a stable reason code such as `VISITOR_LIMITED`,
   `DUPLICATE_REPORT`, `POLL_ALREADY_VOTED`, `PAYMENT_REQUIRED`,
   `REVEAL_NOT_ALLOWED`, or `RADAR_OPT_IN_REQUIRED`.
-- Responses must not expose sender identity, exact user location, private
+- Responses must not expose sender identity, exact user location, individual
+  user pins, private
   moderation metadata, or sensitive payment details unless explicitly allowed for
   the current authenticated user and action.
 
@@ -119,12 +120,14 @@ payload privacy.
 
 | Method | Path | Auth | Purpose |
 |--------|------|------|---------|
-| PATCH | `/api/radar/presence` | Yes | Opt in/out and update approximate proximity settings |
-| GET | `/api/radar` | Yes | List nearby rooms and opted-in people by type and distance |
+| PATCH | `/api/radar/presence` | Yes | Opt in/out and update neighborhood/region-level proximity settings |
+| GET | `/api/radar` | Yes | List nearby rooms plus opted-in people counts/aggregations by neighborhood or region, type, and distance |
 | POST | `/api/radar/rooms` | Yes | Create region-based room |
 | POST | `/api/proximity-chats` | Yes | Start anonymous temporary nearby chat |
 | GET | `/api/proximity-chats/{chatId}` | Yes | Load active temporary chat metadata |
 | POST | `/api/proximity-chats/{chatId}/messages` | Yes | Send anonymous temporary chat message |
 
-**Backend-owned rules**: location approximation, opt-in visibility, radius from
-500m to 10km, nearby eligibility, temporary chat expiry, anonymity.
+**Backend-owned rules**: Radar uses neighborhood/region-level discovery only. It
+must never show exact location or individual user pins. Nearby people appear only
+as counts or aggregation by region. Backend also owns opt-in visibility, radius
+from 500m to 10km, nearby eligibility, temporary chat expiry, and anonymity.

@@ -6,7 +6,7 @@ From the repository root:
 
 ```bash
 npm install zustand @tanstack/react-query axios nativewind tailwindcss
-npx expo install expo-secure-store expo-location react-native-maps
+npx expo install expo-secure-store expo-location react-native-maps expo-notifications expo-device
 ```
 
 If React Native Maps requires native app store configuration for release builds,
@@ -93,9 +93,12 @@ Manual verification checklist:
   sharing.
 - Reports prevent duplicates and moderator actions are permission-gated.
 - Paid features remain locked until backend confirmation.
-- Notifications omit sender identity and sensitive metadata.
-- Radar requires opt-in, shows approximate nearby results only, and honors
-  distance/type filters.
+- Notifications omit sender identity and sensitive metadata. Push permission
+  denial is handled clearly, and authenticated users can register a device push
+  token with the API after permission is granted.
+- Radar uses neighborhood/region-level discovery only. It must never show exact
+  location or individual user pins. Nearby people appear only as counts or
+  aggregation by region, and radar honors distance/type filters.
 - Every primary screen has loading, error, empty, and success states.
 
 ## 7. Constitution Checks Before Implementation Completion

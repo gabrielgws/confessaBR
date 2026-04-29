@@ -22,13 +22,13 @@
 
 **Purpose**: Install required dependencies and configure project-level foundations.
 
-- [ ] T001 Install NativeWind, Zustand, TanStack Query, Axios, SecureStore, Location, and Maps dependencies in package.json
+- [ ] T001 Install NativeWind, Zustand, TanStack Query, Axios, SecureStore, Location, Maps, Expo Notifications, and Expo Device dependencies in package.json
 - [ ] T002 [P] Configure NativeWind Metro integration in metro.config.js
 - [ ] T003 [P] Configure Tailwind content paths for app, components, and features in tailwind.config.js
 - [ ] T004 [P] Add NativeWind global stylesheet imports in global.css
 - [ ] T005 [P] Add NativeWind TypeScript declarations in nativewind-env.d.ts
 - [ ] T006 [P] Verify TypeScript path alias includes repository root imports in tsconfig.json
-- [ ] T007 Configure Expo plugins and permissions for location and maps in app.json
+- [ ] T007 Configure Expo plugins and permissions for location, maps, and push notifications in app.json
 
 ---
 
@@ -38,23 +38,37 @@
 
 **CRITICAL**: No user story work starts until this phase is complete.
 
-- [ ] T008 Create feature directories for auth, profile, inbox, rooms, polls, moderation, payments, notifications, and radar in features/.gitkeep
-- [ ] T009 Create shared service, store, type, utility, and layout directories in services/.gitkeep
-- [ ] T010 [P] Define shared API error and pagination types in types/api.ts
-- [ ] T011 [P] Define shared user, visitor, privacy, and notification preference types in types/user.ts
-- [ ] T012 [P] Create SecureStore token helper in utils/secure-token.ts
-- [ ] T013 Create centralized Axios client with Bearer token injection and error normalization in services/api.ts
-- [ ] T014 [P] Create TanStack Query client configuration and query key helpers in services/query-client.ts
-- [ ] T015 [P] Create auth/session Zustand store with visitor mode state in store/auth.store.ts
-- [ ] T016 [P] Create shared UI state components for loading, error, empty, and success states in components/ui/state-view.tsx
-- [ ] T017 [P] Create reusable Button component using NativeWind only in components/ui/button.tsx
-- [ ] T018 [P] Create reusable Input component using NativeWind only in components/ui/input.tsx
-- [ ] T019 [P] Create reusable Card component using NativeWind only in components/ui/card.tsx
-- [ ] T020 [P] Create reusable Avatar and Badge components using NativeWind only in components/ui/avatar.tsx and components/ui/badge.tsx
-- [ ] T021 [P] Create reusable Modal, BottomSheet, Tabs, and Header exports in components/ui/index.ts
-- [ ] T022 Wire QueryClientProvider, auth bootstrap, global CSS import, and root navigation shell in app/_layout.tsx
-- [ ] T023 Create authenticated route guard and visitor restriction helper in features/auth/route-guards.ts
-- [ ] T024 Create shared privacy-safe logging helper that redacts tokens, sender identity, payments, and location in utils/privacy-log.ts
+- [ ] T008 [P] Create auth feature directory marker in features/auth/.gitkeep
+- [ ] T009 [P] Create profile feature directory marker in features/profile/.gitkeep
+- [ ] T010 [P] Create inbox feature directory marker in features/inbox/.gitkeep
+- [ ] T011 [P] Create rooms feature directory marker in features/rooms/.gitkeep
+- [ ] T012 [P] Create polls feature directory marker in features/polls/.gitkeep
+- [ ] T013 [P] Create moderation feature directory marker in features/moderation/.gitkeep
+- [ ] T014 [P] Create payments feature directory marker in features/payments/.gitkeep
+- [ ] T015 [P] Create notifications feature directory marker in features/notifications/.gitkeep
+- [ ] T016 [P] Create radar feature directory marker in features/radar/.gitkeep
+- [ ] T017 [P] Create services directory marker in services/.gitkeep
+- [ ] T018 [P] Create store directory marker in store/.gitkeep
+- [ ] T019 [P] Create types directory marker in types/.gitkeep
+- [ ] T020 [P] Create utils directory marker in utils/.gitkeep
+- [ ] T021 [P] Create layout directory marker in components/layout/.gitkeep
+- [ ] T022 [P] Create shared components directory marker in components/shared/.gitkeep
+- [ ] T023 [P] Define shared API error and pagination types in types/api.ts
+- [ ] T024 [P] Define shared user, visitor, privacy, and notification preference types in types/user.ts
+- [ ] T025 [P] Create SecureStore token helper in utils/secure-token.ts
+- [ ] T026 Create centralized Axios client with Bearer token injection and error normalization in services/api.ts
+- [ ] T027 [P] Create TanStack Query client configuration and query key helpers in services/query-client.ts
+- [ ] T028 [P] Create auth/session Zustand store with visitor mode state in store/auth.store.ts
+- [ ] T029 [P] Create Expo Notifications permission and push-token helper in utils/push-notifications.ts
+- [ ] T030 [P] Create shared UI state components for loading, error, empty, and success states in components/ui/state-view.tsx
+- [ ] T031 [P] Create reusable Button component using NativeWind only in components/ui/button.tsx
+- [ ] T032 [P] Create reusable Input component using NativeWind only in components/ui/input.tsx
+- [ ] T033 [P] Create reusable Card component using NativeWind only in components/ui/card.tsx
+- [ ] T034 [P] Create reusable Avatar and Badge components using NativeWind only in components/ui/avatar.tsx and components/ui/badge.tsx
+- [ ] T035 [P] Create reusable Modal, BottomSheet, Tabs, and Header exports in components/ui/index.ts
+- [ ] T036 Wire QueryClientProvider, auth bootstrap, global CSS import, root navigation shell, and configure notification provider/listener bootstrap in app/_layout.tsx without requesting permissions or registering device tokens
+- [ ] T037 Create authenticated route guard and visitor restriction helper in features/auth/route-guards.ts
+- [ ] T038 Create shared privacy-safe logging helper that redacts tokens, sender identity, payments, and location in utils/privacy-log.ts
 
 **Checkpoint**: Foundation ready. User story phases can now proceed.
 
@@ -68,19 +82,19 @@
 
 ### Implementation for User Story 1
 
-- [ ] T025 [P] [US1] Define auth, profile, session, and preference request/response types in types/auth.ts
-- [ ] T026 [P] [US1] Implement auth REST methods for register, login, logout, and current user in services/auth.service.ts
-- [ ] T027 [P] [US1] Implement profile and preference REST methods in services/profile.service.ts
-- [ ] T028 [US1] Implement useAuthSession hook for login, register, logout, visitor mode, and bootstrap in features/auth/use-auth-session.ts
-- [ ] T029 [US1] Implement useProfile hook for profile, privacy, and notification preference updates in features/profile/use-profile.ts
-- [ ] T030 [US1] Replace starter landing route with ConfessaBR landing and visitor/auth entry points in app/index.tsx
-- [ ] T031 [US1] Implement login screen with loading, error, empty, and success state handling in app/(auth)/login.tsx
-- [ ] T032 [US1] Implement register screen with username uniqueness error handling in app/(auth)/register.tsx
-- [ ] T033 [US1] Implement authenticated home shell with visitor guard redirect in app/(tabs)/home.tsx
-- [ ] T034 [US1] Implement profile screen with edit profile, privacy, and notification preference sections in app/(tabs)/profile.tsx
-- [ ] T035 [US1] Implement settings screen with sign out and privacy preference access in app/settings.tsx
-- [ ] T036 [US1] Validate visitor access is limited to landing and authentication screens in features/auth/route-guards.ts
-- [ ] T037 [US1] Document manual US1 verification steps in specs/001-confessabr-social-mvp/quickstart.md
+- [ ] T039 [P] [US1] Define auth, profile, session, and preference request/response types in types/auth.ts
+- [ ] T040 [P] [US1] Implement auth REST methods for register, login, logout, and current user in services/auth.service.ts
+- [ ] T041 [P] [US1] Implement profile and preference REST methods in services/profile.service.ts
+- [ ] T042 [US1] Implement useAuthSession hook for login, register, logout, visitor mode, and bootstrap in features/auth/use-auth-session.ts
+- [ ] T043 [US1] Implement useProfile hook for profile, privacy, and notification preference updates in features/profile/use-profile.ts
+- [ ] T044 [US1] Replace starter landing route with ConfessaBR landing and visitor/auth entry points in app/index.tsx
+- [ ] T045 [US1] Implement login screen with loading, error, empty, and success state handling in app/(auth)/login.tsx
+- [ ] T046 [US1] Implement register screen with username uniqueness error handling in app/(auth)/register.tsx
+- [ ] T047 [US1] Implement authenticated home shell with visitor guard redirect in app/(tabs)/home.tsx
+- [ ] T048 [US1] Implement profile screen with edit profile, privacy, and notification preference sections in app/(tabs)/profile.tsx
+- [ ] T049 [US1] Implement settings screen with sign out and privacy preference access in app/settings.tsx
+- [ ] T050 [US1] Validate visitor access is limited to landing and authentication screens in features/auth/route-guards.ts
+- [ ] T051 [US1] Document manual US1 verification steps in specs/001-confessabr-social-mvp/quickstart.md
 
 **Checkpoint**: US1 independently functional.
 
@@ -94,17 +108,17 @@
 
 ### Implementation for User Story 2
 
-- [ ] T038 [P] [US2] Define anonymous message, reveal, archive, share, and send payload types in types/inbox.ts
-- [ ] T039 [P] [US2] Implement inbox and direct message REST methods in services/inbox.service.ts
-- [ ] T040 [P] [US2] Implement payment capability lookup used by reveal flow in services/payments.service.ts
-- [ ] T041 [US2] Implement inbox query and mutation hooks with cache invalidation in features/inbox/use-inbox.ts
-- [ ] T042 [US2] Implement direct anonymous message composer logic in features/inbox/use-send-message.ts
-- [ ] T043 [US2] Implement reveal eligibility hook that respects send-time consent and payment confirmation in features/inbox/use-reveal-sender.ts
-- [ ] T044 [US2] Implement inbox list screen with loading, error, empty, and success states in app/(tabs)/inbox.tsx
-- [ ] T045 [US2] Implement inbox message detail, archive, report, share, and reveal actions in app/(modals)/message-detail.tsx
-- [ ] T046 [US2] Implement anonymous message compose modal in app/(modals)/send-message.tsx
-- [ ] T047 [US2] Ensure safe share payload excludes sender identity and sensitive metadata in features/inbox/share-message.ts
-- [ ] T048 [US2] Validate US2 privacy and payment behavior against contracts/rest-api.md in specs/001-confessabr-social-mvp/quickstart.md
+- [ ] T052 [P] [US2] Define anonymous message, reveal, archive, share, and send payload types in types/inbox.ts
+- [ ] T053 [P] [US2] Implement inbox and direct message REST methods in services/inbox.service.ts
+- [ ] T054 [P] [US2] Implement payment capability lookup used by reveal flow in services/payments.service.ts
+- [ ] T055 [US2] Implement inbox query and mutation hooks with cache invalidation in features/inbox/use-inbox.ts
+- [ ] T056 [US2] Implement direct anonymous message composer logic in features/inbox/use-send-message.ts
+- [ ] T057 [US2] Implement reveal eligibility hook that respects send-time consent and payment confirmation in features/inbox/use-reveal-sender.ts
+- [ ] T058 [US2] Implement inbox list screen with loading, error, empty, and success states in app/(tabs)/inbox.tsx
+- [ ] T059 [US2] Implement inbox message detail, archive, report, share, and reveal actions in app/(modals)/message-detail.tsx
+- [ ] T060 [US2] Implement anonymous message compose modal in app/(modals)/send-message.tsx
+- [ ] T061 [US2] Ensure safe share payload excludes sender identity and sensitive metadata in features/inbox/share-message.ts
+- [ ] T062 [US2] Validate US2 privacy and payment behavior against contracts/rest-api.md in specs/001-confessabr-social-mvp/quickstart.md
 
 **Checkpoint**: US2 independently functional and privacy checked.
 
@@ -118,17 +132,17 @@
 
 ### Implementation for User Story 3
 
-- [ ] T049 [P] [US3] Define room, membership, feed item, join code, and room permission types in types/rooms.ts
-- [ ] T050 [P] [US3] Implement room and room feed REST methods in services/rooms.service.ts
-- [ ] T051 [P] [US3] Implement basic moderation report method for room feed reports in services/moderation.service.ts
-- [ ] T052 [US3] Implement room list, create, join, leave, member, and feed hooks in features/rooms/use-rooms.ts
-- [ ] T053 [US3] Implement room feed composer and report hooks in features/rooms/use-room-feed.ts
-- [ ] T054 [US3] Implement rooms tab with loading, error, empty, and success states in app/(tabs)/rooms.tsx
-- [ ] T055 [US3] Implement create room modal in app/(modals)/create-room.tsx
-- [ ] T056 [US3] Implement join room by code modal in app/(modals)/join-room.tsx
-- [ ] T057 [US3] Implement room detail route with feed, members, leave, and permission-gated moderation controls in app/rooms/[id].tsx
-- [ ] T058 [US3] Ensure room feed messages render anonymous sender aliases only in features/rooms/room-feed-item.tsx
-- [ ] T059 [US3] Validate first MVP readiness for US1-US3 in specs/001-confessabr-social-mvp/quickstart.md
+- [ ] T063 [P] [US3] Define room, membership, feed item, join code, and room permission types in types/rooms.ts
+- [ ] T064 [P] [US3] Implement room and room feed REST methods in services/rooms.service.ts
+- [ ] T065 [P] [US3] Implement basic moderation report method for room feed reports in services/moderation.service.ts
+- [ ] T066 [US3] Implement room list, create, join, leave, member, and feed hooks in features/rooms/use-rooms.ts
+- [ ] T067 [US3] Implement room feed composer and report hooks in features/rooms/use-room-feed.ts
+- [ ] T068 [US3] Implement rooms tab with loading, error, empty, and success states in app/(tabs)/rooms.tsx
+- [ ] T069 [US3] Implement create room modal in app/(modals)/create-room.tsx
+- [ ] T070 [US3] Implement join room by code modal in app/(modals)/join-room.tsx
+- [ ] T071 [US3] Implement room detail route with feed, members, leave, and permission-gated moderation controls in app/rooms/[id].tsx
+- [ ] T072 [US3] Ensure room feed messages render anonymous sender aliases only in features/rooms/room-feed-item.tsx
+- [ ] T073 [US3] Validate first MVP readiness for US1-US3 in specs/001-confessabr-social-mvp/quickstart.md
 
 **Checkpoint**: First shippable MVP increment complete when US1-US3 pass validation.
 
@@ -142,14 +156,14 @@
 
 ### Implementation for User Story 4
 
-- [ ] T060 [P] [US4] Define poll, positive category, invitation, vote, result, and safe share types in types/polls.ts
-- [ ] T061 [P] [US4] Implement poll REST methods in services/polls.service.ts
-- [ ] T062 [US4] Implement positive poll category and custom text validation adapters in features/polls/poll-rules.ts
-- [ ] T063 [US4] Implement poll creation, invitation, consent, voting, results, and share hooks in features/polls/use-polls.ts
-- [ ] T064 [US4] Implement create poll modal with allowed categories and limited custom text in app/(modals)/create-poll.tsx
-- [ ] T065 [US4] Implement poll detail route with invite, accept/refuse, vote, close, results, and state views in app/polls/[id].tsx
-- [ ] T066 [US4] Add room detail integration entry points for creating and opening polls in app/rooms/[id].tsx
-- [ ] T067 [US4] Validate one-vote and safe result sharing behavior in specs/001-confessabr-social-mvp/quickstart.md
+- [ ] T074 [P] [US4] Define poll, positive category, invitation, vote, result, and safe share types in types/polls.ts
+- [ ] T075 [P] [US4] Implement poll REST methods in services/polls.service.ts
+- [ ] T076 [US4] Implement positive poll category and custom text validation adapters in features/polls/poll-rules.ts
+- [ ] T077 [US4] Implement poll creation, invitation, consent, voting, results, and share hooks in features/polls/use-polls.ts
+- [ ] T078 [US4] Implement create poll modal with allowed categories and limited custom text in app/(modals)/create-poll.tsx
+- [ ] T079 [US4] Implement poll detail route with invite, accept/refuse, vote, close, results, and state views in app/polls/[id].tsx
+- [ ] T080 [US4] Add room detail integration entry points for creating and opening polls in app/rooms/[id].tsx
+- [ ] T081 [US4] Validate one-vote and safe result sharing behavior in specs/001-confessabr-social-mvp/quickstart.md
 
 **Checkpoint**: US4 independently functional after room membership exists.
 
@@ -163,14 +177,14 @@
 
 ### Implementation for User Story 5
 
-- [ ] T068 [P] [US5] Define report, moderation queue, moderation action, block, and ban types in types/moderation.ts
-- [ ] T069 [P] [US5] Expand moderation REST methods for reports, queue, and actions in services/moderation.service.ts
-- [ ] T070 [US5] Implement report submission and duplicate-report error handling hooks in features/moderation/use-report.ts
-- [ ] T071 [US5] Implement moderation queue and action hooks in features/moderation/use-moderation.ts
-- [ ] T072 [US5] Create shared report modal for messages, room feed items, polls, and users in app/(modals)/report.tsx
-- [ ] T073 [US5] Create moderator queue screen with hide, remove, block, and ban actions in app/(modals)/moderation-queue.tsx
-- [ ] T074 [US5] Integrate shared report actions into inbox, room feed, and poll screens in features/moderation/report-targets.ts
-- [ ] T075 [US5] Validate duplicate report and moderator permission behavior in specs/001-confessabr-social-mvp/quickstart.md
+- [ ] T082 [P] [US5] Define report, moderation queue, moderation action, block, and ban types in types/moderation.ts
+- [ ] T083 [P] [US5] Expand moderation REST methods for reports, queue, and actions in services/moderation.service.ts
+- [ ] T084 [US5] Implement report submission and duplicate-report error handling hooks in features/moderation/use-report.ts
+- [ ] T085 [US5] Implement moderation queue and action hooks in features/moderation/use-moderation.ts
+- [ ] T086 [US5] Create shared report modal for messages, room feed items, polls, and users in app/(modals)/report.tsx
+- [ ] T087 [US5] Create moderator queue screen with hide, remove, block, and ban actions in app/(modals)/moderation-queue.tsx
+- [ ] T088 [US5] Integrate shared report actions into inbox, room feed, and poll screens in features/moderation/report-targets.ts
+- [ ] T089 [US5] Validate duplicate report and moderator permission behavior in specs/001-confessabr-social-mvp/quickstart.md
 
 **Checkpoint**: US5 independently functional across reportable targets.
 
@@ -184,12 +198,12 @@
 
 ### Implementation for User Story 6
 
-- [ ] T076 [P] [US6] Define payment, checkout, capability, and payment status types in types/payments.ts
-- [ ] T077 [US6] Complete payment creation, status, and capability REST methods in services/payments.service.ts
-- [ ] T078 [US6] Implement payment checkout and status polling hooks in features/payments/use-payments.ts
-- [ ] T079 [US6] Implement payment checkout modal with pending, failed, cancelled, and confirmed states in app/(modals)/payment-checkout.tsx
-- [ ] T080 [US6] Integrate paid sender reveal checkout flow into inbox reveal hook in features/inbox/use-reveal-sender.ts
-- [ ] T081 [US6] Validate paid capability lock/unlock behavior in specs/001-confessabr-social-mvp/quickstart.md
+- [ ] T090 [P] [US6] Define payment, checkout, capability, and payment status types in types/payments.ts
+- [ ] T091 [US6] Complete payment creation, status, and capability REST methods in services/payments.service.ts
+- [ ] T092 [US6] Implement payment checkout and status polling hooks in features/payments/use-payments.ts
+- [ ] T093 [US6] Implement payment checkout modal with pending, failed, cancelled, and confirmed states in app/(modals)/payment-checkout.tsx
+- [ ] T094 [US6] Integrate paid sender reveal checkout flow into inbox reveal hook in features/inbox/use-reveal-sender.ts
+- [ ] T095 [US6] Validate paid capability lock/unlock behavior in specs/001-confessabr-social-mvp/quickstart.md
 
 **Checkpoint**: US6 independently functional for paid sender reveal.
 
@@ -199,19 +213,19 @@
 
 **Goal**: Registered users can opt into radar, view neighborhood/region-level nearby rooms and opted-in people, filter by type/distance, create region rooms, and start temporary anonymous proximity chats.
 
-**Independent Test**: Grant/deny location, opt in/out, filter radar, verify no individual person pins or exact locations, create a region room, and start an anonymous temporary proximity chat.
+**Independent Test**: Grant/deny location, opt in/out, filter radar, verify no individual user pins or exact locations, create a region room, and start an anonymous temporary proximity chat.
 
 ### Implementation for User Story 7
 
-- [ ] T082 [P] [US7] Define radar presence, radar result, region room, proximity chat, and distance filter types in types/radar.ts
-- [ ] T083 [P] [US7] Implement radar and proximity chat REST methods in services/radar.service.ts
-- [ ] T084 [US7] Implement location permission and approximate region helper in features/radar/use-location-permission.ts
-- [ ] T085 [US7] Implement radar presence, filters, results, region room, and proximity chat hooks in features/radar/use-radar.ts
-- [ ] T086 [US7] Implement radar tab with map/list UI, type filter, distance filter, and state views in app/(tabs)/radar.tsx
-- [ ] T087 [US7] Ensure radar UI renders neighborhood/region areas and never individual person pins in features/radar/radar-map.tsx
-- [ ] T088 [US7] Implement create region room action from radar in features/radar/create-region-room.ts
-- [ ] T089 [US7] Implement temporary anonymous proximity chat modal in app/(modals)/proximity-chat.tsx
-- [ ] T090 [US7] Validate opt-in, no individual pins, no exact locations, and radius behavior in specs/001-confessabr-social-mvp/quickstart.md
+- [ ] T096 [P] [US7] Define radar presence, radar result, region room, proximity chat, and distance filter types in types/radar.ts
+- [ ] T097 [P] [US7] Implement radar and proximity chat REST methods in services/radar.service.ts
+- [ ] T098 [US7] Implement location permission and neighborhood/region discovery helper in features/radar/use-location-permission.ts
+- [ ] T099 [US7] Implement radar presence, filters, results, region room, and proximity chat hooks in features/radar/use-radar.ts
+- [ ] T100 [US7] Implement radar tab with map/list UI, type filter, distance filter, and state views in app/(tabs)/radar.tsx
+- [ ] T101 [US7] Ensure radar UI renders neighborhood/region areas and never individual user pins in features/radar/radar-map.tsx
+- [ ] T102 [US7] Implement create region room action from radar in features/radar/create-region-room.ts
+- [ ] T103 [US7] Implement temporary anonymous proximity chat modal in app/(modals)/proximity-chat.tsx
+- [ ] T104 [US7] Validate opt-in, no individual user pins, no exact locations, and radius behavior in specs/001-confessabr-social-mvp/quickstart.md
 
 **Checkpoint**: US7 independently functional with privacy constraints.
 
@@ -225,14 +239,19 @@
 
 ### Implementation for User Story 8
 
-- [ ] T091 [P] [US8] Define notification, device registration, read state, and preference types in types/notifications.ts
-- [ ] T092 [P] [US8] Implement notification REST methods in services/notifications.service.ts
-- [ ] T093 [US8] Implement notification device registration and preference hooks in features/notifications/use-notifications.ts
-- [ ] T094 [US8] Implement notification history and mark-read logic in features/notifications/use-notification-history.ts
-- [ ] T095 [US8] Add notification preference controls to profile/settings screens in app/settings.tsx
-- [ ] T096 [US8] Implement notification history surface in app/(modals)/notifications.tsx
-- [ ] T097 [US8] Ensure notification rendering omits sender identity, exact location, payment internals, and moderation metadata in features/notifications/notification-item.tsx
-- [ ] T098 [US8] Validate notification preference and payload privacy behavior in specs/001-confessabr-social-mvp/quickstart.md
+- [ ] T105 [P] [US8] Define notification, device registration, read state, and preference types in types/notifications.ts
+- [ ] T106 [P] [US8] Implement notification REST methods in services/notifications.service.ts
+- [ ] T107 [US8] Implement push permission request flow after authentication and user action/consent with denied-permission state in utils/push-notifications.ts
+- [ ] T108 [US8] Implement Expo push token retrieval for authenticated users in utils/push-notifications.ts
+- [ ] T109 [US8] Register authenticated user's device push token with the API in services/notifications.service.ts
+- [ ] T110 [US8] Implement notification device registration and preference hooks in features/notifications/use-notifications.ts
+- [ ] T111 [US8] Implement notification history and mark-read logic in features/notifications/use-notification-history.ts
+- [ ] T112 [US8] Add notification preference controls to profile/settings screens in app/settings.tsx
+- [ ] T113 [US8] Implement notification history surface in app/(modals)/notifications.tsx
+- [ ] T114 [US8] Ensure notification rendering omits sender identity, exact location, payment internals, and moderation metadata in features/notifications/notification-item.tsx
+- [ ] T115 [US8] Validate push permission denied behavior in specs/001-confessabr-social-mvp/quickstart.md
+- [ ] T116 [US8] Validate authenticated device push token registration in specs/001-confessabr-social-mvp/quickstart.md
+- [ ] T117 [US8] Validate notification preference and payload privacy behavior in specs/001-confessabr-social-mvp/quickstart.md
 
 **Checkpoint**: US8 independently functional and privacy checked.
 
@@ -242,14 +261,18 @@
 
 **Purpose**: Final validation, cleanup, and constitution checks across all implemented increments.
 
-- [ ] T099 [P] Update README with setup, environment, and run instructions for ConfessaBR MVP in README.md
-- [ ] T100 [P] Update implementation notes and current plan references in AGENTS.md
-- [ ] T101 Verify no manual StyleSheet usage exists in app/, components/, features/, hooks/, store/, types/, utils/, and services/ via specs/001-confessabr-social-mvp/quickstart.md
-- [ ] T102 Verify no direct API calls exist inside app/ or components/ via specs/001-confessabr-social-mvp/quickstart.md
-- [ ] T103 Verify tokens are stored only through SecureStore helper in utils/secure-token.ts
-- [ ] T104 Verify no sensitive identity, payment, moderation, or exact location data is logged through utils/privacy-log.ts
-- [ ] T105 Run lint and resolve reported issues in package.json
-- [ ] T106 Run full manual quickstart validation and record completion notes in specs/001-confessabr-social-mvp/quickstart.md
+- [ ] T118 [P] Update README with setup, environment, and run instructions for ConfessaBR MVP in README.md
+- [ ] T119 [P] Update implementation notes and current plan references in AGENTS.md
+- [ ] T120 Verify no manual StyleSheet usage exists in app/, components/, features/, hooks/, store/, types/, utils/, and services/ via specs/001-confessabr-social-mvp/quickstart.md
+- [ ] T121 Verify no direct API calls exist inside app/ or components/ via specs/001-confessabr-social-mvp/quickstart.md
+- [ ] T122 Verify tokens are stored only through SecureStore helper in utils/secure-token.ts
+- [ ] T123 Verify no sensitive identity, payment, moderation, or exact location data is logged through utils/privacy-log.ts
+- [ ] T124 Run lint and resolve reported issues in package.json
+- [ ] T125 Create post-implementation usability test script for SC-001, SC-007, and SC-008 in specs/001-confessabr-social-mvp/usability-test.md
+- [ ] T126 Execute post-implementation usability validation with participants or a documented simulated session in specs/001-confessabr-social-mvp/usability-test.md
+- [ ] T127 Record completion-rate results for account/visitor, room, and poll flows in specs/001-confessabr-social-mvp/usability-test.md
+- [ ] T128 Validate post-implementation basic screen responsiveness: useful feedback within 1s for primary actions and smooth list/radar interactions on a representative device or simulator in specs/001-confessabr-social-mvp/quickstart.md
+- [ ] T129 Run full manual quickstart validation and record completion notes in specs/001-confessabr-social-mvp/quickstart.md
 
 ---
 
@@ -259,7 +282,7 @@
 
 - **Setup (Phase 1)**: No dependencies.
 - **Foundational (Phase 2)**: Depends on Phase 1 and blocks all user stories.
-- **P1 MVP stories (Phases 3-5)**: Depend on Phase 2. US1 should complete before US2/US3 because authentication gates registered-only flows.
+- **P1 stories (Phases 3-5)**: Depend on Phase 2. US1 should complete before US2/US3 because authentication gates registered-only flows.
 - **P2 follow-up stories (Phases 6-8)**: Depend on Phase 2 plus relevant P1 surfaces. US4 depends on US3 rooms. US5 depends on reportable surfaces from US2-US4. US6 depends on US2 reveal flow.
 - **P3 follow-up stories (Phases 9-10)**: Depend on Phase 2 plus auth/session. US8 also benefits from US2, US4, and US6 event surfaces.
 - **Polish (Phase 11)**: Depends on all desired story phases for the selected release increment.
@@ -299,32 +322,32 @@
 ### User Story 1
 
 ```text
-Task: T025 [US1] Define auth, profile, session, and preference request/response types in types/auth.ts
-Task: T026 [US1] Implement auth REST methods for register, login, logout, and current user in services/auth.service.ts
-Task: T027 [US1] Implement profile and preference REST methods in services/profile.service.ts
+Task: T039 [US1] Define auth, profile, session, and preference request/response types in types/auth.ts
+Task: T040 [US1] Implement auth REST methods for register, login, logout, and current user in services/auth.service.ts
+Task: T041 [US1] Implement profile and preference REST methods in services/profile.service.ts
 ```
 
 ### User Story 2
 
 ```text
-Task: T038 [US2] Define anonymous message, reveal, archive, share, and send payload types in types/inbox.ts
-Task: T039 [US2] Implement inbox and direct message REST methods in services/inbox.service.ts
-Task: T040 [US2] Implement payment capability lookup used by reveal flow in services/payments.service.ts
+Task: T052 [US2] Define anonymous message, reveal, archive, share, and send payload types in types/inbox.ts
+Task: T053 [US2] Implement inbox and direct message REST methods in services/inbox.service.ts
+Task: T054 [US2] Implement payment capability lookup used by reveal flow in services/payments.service.ts
 ```
 
 ### User Story 3
 
 ```text
-Task: T049 [US3] Define room, membership, feed item, join code, and room permission types in types/rooms.ts
-Task: T050 [US3] Implement room and room feed REST methods in services/rooms.service.ts
-Task: T051 [US3] Implement basic moderation report method for room feed reports in services/moderation.service.ts
+Task: T063 [US3] Define room, membership, feed item, join code, and room permission types in types/rooms.ts
+Task: T064 [US3] Implement room and room feed REST methods in services/rooms.service.ts
+Task: T065 [US3] Implement basic moderation report method for room feed reports in services/moderation.service.ts
 ```
 
 ### User Story 7
 
 ```text
-Task: T082 [US7] Define radar presence, radar result, region room, proximity chat, and distance filter types in types/radar.ts
-Task: T083 [US7] Implement radar and proximity chat REST methods in services/radar.service.ts
+Task: T096 [US7] Define radar presence, radar result, region room, proximity chat, and distance filter types in types/radar.ts
+Task: T097 [US7] Implement radar and proximity chat REST methods in services/radar.service.ts
 ```
 
 ---

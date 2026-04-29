@@ -5,10 +5,12 @@
 
 ## Summary
 
-Build the ConfessaBR mobile MVP on the existing Expo Router app. The plan turns
+Build the ConfessaBR mobile product on the existing Expo Router app. The plan turns
 the starter project into a layered anonymous social app with auth and visitor
 mode, profile, anonymous inbox, rooms, room feed, positive polls, moderation,
 payments, notifications, radar proximity discovery, and temporary proximity chat.
+The full planned feature includes P1, P2 and P3. The first shippable MVP
+increment includes only US1-US3.
 
 The implementation approach is to add the required mobile stack, centralize API
 access through Axios services, use TanStack Query for server state, keep global
@@ -19,14 +21,14 @@ all business rules.
 ## Technical Context
 
 **Language/Version**: TypeScript 5.9 with strict mode, React 19.1, React Native 0.81.5, Expo SDK 54  
-**Primary Dependencies**: Expo Router 6, NativeWind, Zustand, TanStack Query, Axios, Expo SecureStore, Expo Location, React Native Maps, existing Expo UI/runtime packages  
-**Storage**: Expo SecureStore for auth token only; in-memory Zustand for UI/session state; TanStack Query cache for server state; no client-owned business persistence in MVP  
-**Testing**: Expo lint for static checks; focused service/hook tests and screen integration tests to be selected during task generation; manual quickstart verification for MVP flows  
+**Primary Dependencies**: Expo Router 6, NativeWind, Zustand, TanStack Query, Axios, Expo SecureStore, Expo Location, React Native Maps, Expo Notifications, Expo Device, existing Expo UI/runtime packages  
+**Storage**: Expo SecureStore for auth token only; in-memory Zustand for UI/session state; TanStack Query cache for server state; no client-owned business persistence in the full planned feature  
+**Testing**: Expo lint for static checks; focused service/hook tests and screen integration tests to be selected during task generation; manual quickstart verification for feature flows  
 **Target Platform**: iOS and Android mobile app through Expo; web remains secondary and must not drive mobile UX choices  
 **Project Type**: Mobile app consuming a Laravel 13 REST API  
 **Performance Goals**: Primary screens show useful feedback within 1 second, list and radar interactions stay responsive at 60 fps, and users complete core account/room/poll flows within the success criteria from the spec  
-**Constraints**: NativeWind only for styling; no manual `StyleSheet`; no API calls from UI components; Bearer token auth through centralized Axios; tokens only in SecureStore; backend owns validation, authorization, moderation, payment, voting, reveal, consent, and proximity rules; radar location must be approximate and opt-in  
-**Scale/Scope**: MVP includes auth, visitor mode, profile, inbox, rooms, polls, reports/moderation, payments, notifications, radar, and temporary proximity chat across the route set defined by the constitution
+**Constraints**: NativeWind only for styling; no manual `StyleSheet`; no API calls from UI components; Bearer token auth through centralized Axios; tokens only in SecureStore; backend owns validation, authorization, moderation, payment, voting, reveal, consent, and proximity rules; Radar uses neighborhood/region-level discovery only and must never show exact location or individual user pins  
+**Scale/Scope**: The full planned feature includes P1, P2 and P3. The first shippable MVP increment includes only US1-US3. P2 adds polls, moderation, and payments; P3 adds radar, proximity chat, and notifications across the route set defined by the constitution.
 
 ## Constitution Check
 
@@ -45,7 +47,8 @@ all business rules.
   sender reveal, consent, and proximity access.
 - **Security and privacy**: PASS. Token storage is SecureStore-only; visitor
   restrictions, paid reveal, sensitive data sharing, notification privacy,
-  opt-in radar, and approximate location are explicit gates.
+  opt-in radar, neighborhood/region-level discovery, and no individual user pins
+  are explicit gates.
 - **Complete UX states**: PASS. Each primary data surface must implement loading,
   error, empty, and success states using shared UI primitives.
 
@@ -90,7 +93,11 @@ app/
 │   ├── create-room.tsx
 │   ├── create-poll.tsx
 │   ├── join-room.tsx
-│   └── payment-checkout.tsx
+│   ├── message-detail.tsx        # P1 inbox detail
+│   ├── send-message.tsx          # P1 anonymous direct message
+│   ├── payment-checkout.tsx      # P2 payments
+│   ├── proximity-chat.tsx        # P3 proximity chat
+│   └── notifications.tsx         # P3 notifications
 ├── rooms/
 │   └── [id].tsx
 ├── polls/

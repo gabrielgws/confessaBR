@@ -21,11 +21,12 @@ backend-owned historical payment/reveal decisions.
 
 **Fields**: `sessionId`, `startedAt`, `allowedSurfaces`, `restrictionReason`.
 
-**Relationships**: Not linked to content creation, votes, payments, reports, or
-proximity chat.
+**Relationships**: Not linked to content creation, votes, payments, reports,
+authenticated production views, mutable data, or proximity chat.
 
-**Validation rules**: Visitors may browse permitted views only. Attempts to
-create content, vote, pay, report, or start proximity chats are blocked.
+**Validation rules**: Visitors may access only landing and authentication
+surfaces. Visitors cannot access authenticated production views and cannot
+create, vote, pay, report, chat, or mutate data.
 
 ## Anonymous Message
 
@@ -45,13 +46,14 @@ metadata.
 ## Room
 
 **Fields**: `id`, `name`, `description`, `joinCode`, `visibility`, `regionLabel`,
-`approximateLocation`, `memberCount`, `createdBy`, `createdAt`, `updatedAt`.
+`regionDiscoveryArea`, `memberCount`, `createdBy`, `createdAt`, `updatedAt`.
 
 **Relationships**: Has many memberships, feed items, polls, reports, and radar
 listings.
 
-**Validation rules**: Join code validity and access are backend-owned. Region
-rooms use approximate location only.
+**Validation rules**: Join code validity and access are backend-owned. Radar uses
+neighborhood/region-level discovery only. It must never show exact location or
+individual user pins.
 
 **State transitions**: `active` -> `hidden` -> `removed`; membership status is
 tracked separately.
@@ -158,13 +160,15 @@ location, or sensitive payment/moderation details.
 
 ## Radar Presence
 
-**Fields**: `id`, `userId`, `isOptedIn`, `approximateLocation`, `radiusMeters`,
+**Fields**: `id`, `userId`, `isOptedIn`, `regionDiscoveryArea`, `radiusMeters`,
 `lastUpdatedAt`.
 
 **Relationships**: Belongs to user; appears in radar results only while opted in.
 
-**Validation rules**: Exact coordinates are not exposed to other users. Radius is
-between 500m and 10km. Non-opted-in users never appear.
+**Validation rules**: Radar uses neighborhood/region-level discovery only. It
+must never show exact location or individual user pins. Nearby people appear only
+as counts or aggregation by region. Radius is between 500m and 10km. Non-opted-in
+users never appear.
 
 **State transitions**: `hidden` -> `visible` -> `hidden`.
 
