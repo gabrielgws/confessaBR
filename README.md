@@ -2,6 +2,22 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+## ConfessaBR development rules
+
+This repository follows the ConfessaBR mobile constitution in
+`.specify/memory/constitution.md` and the agent guidance in `CODEX.md`.
+
+- Use Expo, React Native, TypeScript, Expo Router, NativeWind, Zustand,
+  TanStack Query, Axios, Expo SecureStore, Expo Location, and React Native Maps
+  where applicable.
+- Keep API calls in `services/` and reusable logic in hooks, stores, or feature
+  modules. Do not call the API directly from UI components.
+- Use NativeWind for styling. Do not add manual `StyleSheet` usage.
+- Store authentication tokens only in Expo SecureStore.
+- Treat the Laravel API as authoritative for validation, authorization,
+  payments, moderation, sender reveal, voting, and proximity access.
+- Provide loading, error, empty, and success states for every user-facing flow.
+
 ## Get started
 
 1. Install dependencies
