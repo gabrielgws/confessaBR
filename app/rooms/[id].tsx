@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 
 import { Button, Card, EmptyState, ErrorState, Header, Input, LoadingState, SuccessState } from '@/components/ui';
+import { reportHref } from '@/features/moderation/report-targets';
 import { RoomFeedItemView } from '@/features/rooms/room-feed-item';
 import { useRoomFeed } from '@/features/rooms/use-room-feed';
 import { useRoomMembers, useRooms } from '@/features/rooms/use-rooms';
@@ -87,6 +88,11 @@ export default function RoomDetailScreen() {
                     disabled={!reportReasonById[item.id] || feed.reportState.isPending}
                     onPress={() => feed.reportFeedItem(item.id, reportReasonById[item.id])}
                   />
+                  <Link
+                    href={reportHref({ targetType: 'room_feed_item', targetId: item.id, roomId: id }) as unknown as Href}
+                    asChild>
+                    <Button title="Report avancado" variant="ghost" />
+                  </Link>
                 </View>
               }
             />

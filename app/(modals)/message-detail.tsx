@@ -1,4 +1,5 @@
-import { useLocalSearchParams, router } from 'expo-router';
+import { Link, useLocalSearchParams, router } from 'expo-router';
+import type { Href } from 'expo-router';
 import { useState } from 'react';
 import { Share, ScrollView, Text, View } from 'react-native';
 
@@ -6,6 +7,7 @@ import { Badge, Button, Card, EmptyState, ErrorState, Header, Input, LoadingStat
 import { useInbox, useInboxMessage } from '@/features/inbox/use-inbox';
 import { useRevealSender } from '@/features/inbox/use-reveal-sender';
 import { useShareMessage } from '@/features/inbox/use-share-message';
+import { reportHref } from '@/features/moderation/report-targets';
 
 export default function MessageDetailScreen() {
   const { messageId } = useLocalSearchParams<{ messageId: string }>();
@@ -62,6 +64,22 @@ export default function MessageDetailScreen() {
             disabled={!reveal.canAttemptReveal || !reveal.isPaymentUnlocked || reveal.state.isPending}
             onPress={() => reveal.reveal()}
           />
+          {!reveal.isPaymentUnlocked && reveal.canAttemptReveal ? (
+            <Link
+              href={
+                {
+                  pathname: '/(modals)/payment-checkout',
+                  params: {
+                    capability: 'sender_reveal',
+                    targetType: 'anonymous_message',
+                    targetId: message.id,
+                  },
+                } as unknown as Href
+              }
+              asChild>
+              <Button title="Iniciar checkout de reveal" variant="secondary" />
+            </Link>
+          ) : null}
         </View>
 
         {reveal.state.data?.senderDisplayName ? <SuccessState title={`Remetente: ${reveal.state.data.senderDisplayName}`} /> : null}
@@ -73,6 +91,9 @@ export default function MessageDetailScreen() {
           <Button title="Enviar report" variant="danger" disabled={!reason || reportState.isPending} onPress={() => reportMessage(message.id, reason)} />
           {reportState.error ? <ErrorState title="Report nao enviado" description={reportState.error.message} /> : null}
           {reportState.isSuccess ? <SuccessState title="Report enviado" /> : null}
+          <Link href={reportHref({ targetType: 'message', targetId: message.id }) as unknown as Href} asChild>
+            <Button title="Abrir report avancado" variant="ghost" />
+          </Link>
         </Card>
       </View>
     </ScrollView>

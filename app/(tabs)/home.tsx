@@ -46,6 +46,9 @@ export default function HomeScreen() {
         <Link href={'/(tabs)/rooms' as Href} asChild>
           <Button title="Ver salas" variant="ghost" />
         </Link>
+        <Link href={'/(modals)/moderation-queue' as Href} asChild>
+          <Button title="Fila de moderacao" variant="ghost" />
+        </Link>
       </View>
     </ScrollView>
   );

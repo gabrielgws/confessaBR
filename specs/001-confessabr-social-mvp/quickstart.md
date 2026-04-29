@@ -174,6 +174,29 @@ Manual verification checklist:
 7. Share poll results and confirm the payload excludes sensitive identity,
    moderation, payment, exact location, and raw private metadata.
 
+### US5 Manual Verification - Reports And Moderation
+
+1. Submit reports from message detail, room feed, and poll detail surfaces.
+2. Attempt a duplicate report for the same target and confirm the backend
+   `DUPLICATE_REPORT` or validation state is shown clearly.
+3. Open the moderation queue as a moderator and confirm queue loading, empty,
+   error, and populated states render.
+4. Apply hide, remove, block, and ban actions against eligible targets and
+   confirm actions refresh the queue.
+5. Open the moderation queue as a non-moderator and confirm backend permission
+   rejection is displayed without exposing private moderation metadata.
+
+### US6 Manual Verification - Paid Capabilities
+
+1. Open an eligible anonymous message whose reveal is locked.
+2. Start a `sender_reveal` checkout and confirm pending, failed, cancelled,
+   expired, and confirmed statuses render from backend payment state.
+3. Abandon or fail checkout and confirm reveal remains locked.
+4. Confirm payment for the intended message and verify only that
+   `anonymous_message` target unlocks sender reveal.
+5. Confirm checkout URLs and payment internals are not logged, shared, or placed
+   into unrelated UI surfaces.
+
 ## 7. Constitution Checks Before Implementation Completion
 
 - No manual `StyleSheet` usage in new ConfessaBR code.

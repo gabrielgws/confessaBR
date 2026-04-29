@@ -1,8 +1,10 @@
-import { useLocalSearchParams } from 'expo-router';
+import { Link, useLocalSearchParams } from 'expo-router';
+import type { Href } from 'expo-router';
 import { useState } from 'react';
 import { Share, ScrollView, Text, View } from 'react-native';
 
 import { Badge, Button, Card, EmptyState, ErrorState, Header, Input, LoadingState, SuccessState } from '@/components/ui';
+import { reportHref } from '@/features/moderation/report-targets';
 import { usePoll } from '@/features/polls/use-polls';
 
 export default function PollDetailScreen() {
@@ -96,6 +98,9 @@ export default function PollDetailScreen() {
           {poll.inviteState.isSuccess ? <SuccessState title="Convites enviados" /> : null}
           {poll.consentState.error ? <ErrorState title="Resposta nao registrada" description={poll.consentState.error.message} /> : null}
           {poll.consentState.isSuccess ? <SuccessState title="Resposta registrada" /> : null}
+          <Link href={reportHref({ targetType: 'poll', targetId: poll.poll.id }) as unknown as Href} asChild>
+            <Button title="Reportar poll" variant="danger" />
+          </Link>
         </Card>
       </View>
     </ScrollView>

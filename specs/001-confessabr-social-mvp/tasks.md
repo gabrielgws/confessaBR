@@ -177,14 +177,14 @@
 
 ### Implementation for User Story 5
 
-- [ ] T082 [P] [US5] Define report, moderation queue, moderation action, block, and ban types in types/moderation.ts
-- [ ] T083 [P] [US5] Expand moderation REST methods for reports, queue, and actions in services/moderation.service.ts
-- [ ] T084 [US5] Implement report submission and duplicate-report error handling hooks in features/moderation/use-report.ts
-- [ ] T085 [US5] Implement moderation queue and action hooks in features/moderation/use-moderation.ts
-- [ ] T086 [US5] Create shared report modal for messages, room feed items, polls, and users in app/(modals)/report.tsx
-- [ ] T087 [US5] Create moderator queue screen with hide, remove, block, and ban actions in app/(modals)/moderation-queue.tsx
-- [ ] T088 [US5] Integrate shared report actions into inbox, room feed, and poll screens in features/moderation/report-targets.ts
-- [ ] T089 [US5] Validate duplicate report and moderator permission behavior in specs/001-confessabr-social-mvp/quickstart.md
+- [X] T082 [P] [US5] Define report, moderation queue, moderation action, block, and ban types in types/moderation.ts
+- [X] T083 [P] [US5] Expand moderation REST methods for reports, queue, and actions in services/moderation.service.ts
+- [X] T084 [US5] Implement report submission and duplicate-report error handling hooks in features/moderation/use-report.ts
+- [X] T085 [US5] Implement moderation queue and action hooks in features/moderation/use-moderation.ts
+- [X] T086 [US5] Create shared report modal for messages, room feed items, polls, and users in app/(modals)/report.tsx
+- [X] T087 [US5] Create moderator queue screen with hide, remove, block, and ban actions in app/(modals)/moderation-queue.tsx
+- [X] T088 [US5] Integrate shared report actions into inbox, room feed, and poll screens in features/moderation/report-targets.ts
+- [X] T089 [US5] Validate duplicate report and moderator permission behavior in specs/001-confessabr-social-mvp/quickstart.md
 
 **Checkpoint**: US5 independently functional across reportable targets.
 
@@ -198,12 +198,12 @@
 
 ### Implementation for User Story 6
 
-- [ ] T090 [P] [US6] Define payment, checkout, capability, and payment status types in types/payments.ts
-- [ ] T091 [US6] Complete payment creation, status, and capability REST methods in services/payments.service.ts
-- [ ] T092 [US6] Implement payment checkout and status polling hooks in features/payments/use-payments.ts
-- [ ] T093 [US6] Implement payment checkout modal with pending, failed, cancelled, and confirmed states in app/(modals)/payment-checkout.tsx
-- [ ] T094 [US6] Integrate paid sender reveal checkout flow into inbox reveal hook in features/inbox/use-reveal-sender.ts
-- [ ] T095 [US6] Validate paid capability lock/unlock behavior in specs/001-confessabr-social-mvp/quickstart.md
+- [X] T090 [P] [US6] Define payment, checkout, capability, and payment status types in types/payments.ts
+- [X] T091 [US6] Complete payment creation, status, and capability REST methods in services/payments.service.ts
+- [X] T092 [US6] Implement payment checkout and status polling hooks in features/payments/use-payments.ts
+- [X] T093 [US6] Implement payment checkout modal with pending, failed, cancelled, and confirmed states in app/(modals)/payment-checkout.tsx
+- [X] T094 [US6] Integrate paid sender reveal checkout flow into inbox reveal hook in features/inbox/use-reveal-sender.ts
+- [X] T095 [US6] Validate paid capability lock/unlock behavior in specs/001-confessabr-social-mvp/quickstart.md
 
 **Checkpoint**: US6 independently functional for paid sender reveal.
 
