@@ -22,13 +22,13 @@
 
 **Purpose**: Install required dependencies and configure project-level foundations.
 
-- [ ] T001 Install NativeWind, Zustand, TanStack Query, Axios, SecureStore, Location, Maps, Expo Notifications, and Expo Device dependencies in package.json
-- [ ] T002 [P] Configure NativeWind Metro integration in metro.config.js
-- [ ] T003 [P] Configure Tailwind content paths for app, components, and features in tailwind.config.js
-- [ ] T004 [P] Add NativeWind global stylesheet imports in global.css
-- [ ] T005 [P] Add NativeWind TypeScript declarations in nativewind-env.d.ts
-- [ ] T006 [P] Verify TypeScript path alias includes repository root imports in tsconfig.json
-- [ ] T007 Configure Expo plugins and permissions for location, maps, and push notifications in app.json
+- [X] T001 Install NativeWind, Zustand, TanStack Query, Axios, SecureStore, Location, Maps, Expo Notifications, and Expo Device dependencies in package.json
+- [X] T002 [P] Configure NativeWind Metro integration in metro.config.js
+- [X] T003 [P] Configure Tailwind content paths for app, components, and features in tailwind.config.js
+- [X] T004 [P] Add NativeWind global stylesheet imports in global.css
+- [X] T005 [P] Add NativeWind TypeScript declarations in nativewind-env.d.ts
+- [X] T006 [P] Verify TypeScript path alias includes repository root imports in tsconfig.json
+- [X] T007 Configure Expo plugins and permissions for location, maps, and push notifications in app.json
 
 ---
 
