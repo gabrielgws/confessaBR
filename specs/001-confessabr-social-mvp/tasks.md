@@ -38,37 +38,37 @@
 
 **CRITICAL**: No user story work starts until this phase is complete.
 
-- [ ] T008 [P] Create auth feature directory marker in features/auth/.gitkeep
-- [ ] T009 [P] Create profile feature directory marker in features/profile/.gitkeep
-- [ ] T010 [P] Create inbox feature directory marker in features/inbox/.gitkeep
-- [ ] T011 [P] Create rooms feature directory marker in features/rooms/.gitkeep
-- [ ] T012 [P] Create polls feature directory marker in features/polls/.gitkeep
-- [ ] T013 [P] Create moderation feature directory marker in features/moderation/.gitkeep
-- [ ] T014 [P] Create payments feature directory marker in features/payments/.gitkeep
-- [ ] T015 [P] Create notifications feature directory marker in features/notifications/.gitkeep
-- [ ] T016 [P] Create radar feature directory marker in features/radar/.gitkeep
-- [ ] T017 [P] Create services directory marker in services/.gitkeep
-- [ ] T018 [P] Create store directory marker in store/.gitkeep
-- [ ] T019 [P] Create types directory marker in types/.gitkeep
-- [ ] T020 [P] Create utils directory marker in utils/.gitkeep
-- [ ] T021 [P] Create layout directory marker in components/layout/.gitkeep
-- [ ] T022 [P] Create shared components directory marker in components/shared/.gitkeep
-- [ ] T023 [P] Define shared API error and pagination types in types/api.ts
-- [ ] T024 [P] Define shared user, visitor, privacy, and notification preference types in types/user.ts
-- [ ] T025 [P] Create SecureStore token helper in utils/secure-token.ts
-- [ ] T026 Create centralized Axios client with Bearer token injection and error normalization in services/api.ts
-- [ ] T027 [P] Create TanStack Query client configuration and query key helpers in services/query-client.ts
-- [ ] T028 [P] Create auth/session Zustand store with visitor mode state in store/auth.store.ts
-- [ ] T029 [P] Create Expo Notifications permission and push-token helper in utils/push-notifications.ts
-- [ ] T030 [P] Create shared UI state components for loading, error, empty, and success states in components/ui/state-view.tsx
-- [ ] T031 [P] Create reusable Button component using NativeWind only in components/ui/button.tsx
-- [ ] T032 [P] Create reusable Input component using NativeWind only in components/ui/input.tsx
-- [ ] T033 [P] Create reusable Card component using NativeWind only in components/ui/card.tsx
-- [ ] T034 [P] Create reusable Avatar and Badge components using NativeWind only in components/ui/avatar.tsx and components/ui/badge.tsx
-- [ ] T035 [P] Create reusable Modal, BottomSheet, Tabs, and Header exports in components/ui/index.ts
-- [ ] T036 Wire QueryClientProvider, auth bootstrap, global CSS import, root navigation shell, and configure notification provider/listener bootstrap in app/_layout.tsx without requesting permissions or registering device tokens
-- [ ] T037 Create authenticated route guard and visitor restriction helper in features/auth/route-guards.ts
-- [ ] T038 Create shared privacy-safe logging helper that redacts tokens, sender identity, payments, and location in utils/privacy-log.ts
+- [X] T008 [P] Create auth feature directory marker in features/auth/.gitkeep
+- [X] T009 [P] Create profile feature directory marker in features/profile/.gitkeep
+- [X] T010 [P] Create inbox feature directory marker in features/inbox/.gitkeep
+- [X] T011 [P] Create rooms feature directory marker in features/rooms/.gitkeep
+- [X] T012 [P] Create polls feature directory marker in features/polls/.gitkeep
+- [X] T013 [P] Create moderation feature directory marker in features/moderation/.gitkeep
+- [X] T014 [P] Create payments feature directory marker in features/payments/.gitkeep
+- [X] T015 [P] Create notifications feature directory marker in features/notifications/.gitkeep
+- [X] T016 [P] Create radar feature directory marker in features/radar/.gitkeep
+- [X] T017 [P] Create services directory marker in services/.gitkeep
+- [X] T018 [P] Create store directory marker in store/.gitkeep
+- [X] T019 [P] Create types directory marker in types/.gitkeep
+- [X] T020 [P] Create utils directory marker in utils/.gitkeep
+- [X] T021 [P] Create layout directory marker in components/layout/.gitkeep
+- [X] T022 [P] Create shared components directory marker in components/shared/.gitkeep
+- [X] T023 [P] Define shared API error and pagination types in types/api.ts
+- [X] T024 [P] Define shared user, visitor, privacy, and notification preference types in types/user.ts
+- [X] T025 [P] Create SecureStore token helper in utils/secure-token.ts
+- [X] T026 Create centralized Axios client with Bearer token injection and error normalization in services/api.ts
+- [X] T027 [P] Create TanStack Query client configuration and query key helpers in services/query-client.ts
+- [X] T028 [P] Create auth/session Zustand store with visitor mode state in store/auth.store.ts
+- [X] T029 [P] Create Expo Notifications permission and push-token helper in utils/push-notifications.ts
+- [X] T030 [P] Create shared UI state components for loading, error, empty, and success states in components/ui/state-view.tsx
+- [X] T031 [P] Create reusable Button component using NativeWind only in components/ui/button.tsx
+- [X] T032 [P] Create reusable Input component using NativeWind only in components/ui/input.tsx
+- [X] T033 [P] Create reusable Card component using NativeWind only in components/ui/card.tsx
+- [X] T034 [P] Create reusable Avatar and Badge components using NativeWind only in components/ui/avatar.tsx and components/ui/badge.tsx
+- [X] T035 [P] Create reusable Modal, BottomSheet, Tabs, and Header exports in components/ui/index.ts
+- [X] T036 Wire QueryClientProvider, auth bootstrap, global CSS import, root navigation shell, and configure notification provider/listener bootstrap in app/_layout.tsx without requesting permissions or registering device tokens
+- [X] T037 Create authenticated route guard and visitor restriction helper in features/auth/route-guards.ts
+- [X] T038 Create shared privacy-safe logging helper that redacts tokens, sender identity, payments, and location in utils/privacy-log.ts
 
 **Checkpoint**: Foundation ready. User story phases can now proceed.
 
