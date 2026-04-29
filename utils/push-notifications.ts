@@ -35,6 +35,10 @@ export async function requestPushPermission(): Promise<PushPermissionState> {
   return permissions.status === Notifications.PermissionStatus.DENIED ? 'denied' : 'undetermined';
 }
 
+export async function requestPushPermissionWithConsent(): Promise<PushPermissionState> {
+  return requestPushPermission();
+}
+
 export async function getExpoPushToken(projectId?: string): Promise<string | null> {
   if ((await getPushPermissionState()) !== 'granted') {
     return null;
@@ -43,6 +47,10 @@ export async function getExpoPushToken(projectId?: string): Promise<string | nul
   const token = await Notifications.getExpoPushTokenAsync(projectId ? { projectId } : undefined);
 
   return token.data;
+}
+
+export async function getAuthenticatedExpoPushToken(projectId?: string): Promise<string | null> {
+  return getExpoPushToken(projectId);
 }
 
 export function configureNotificationHandling() {

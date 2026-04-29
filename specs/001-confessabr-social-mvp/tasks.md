@@ -217,15 +217,15 @@
 
 ### Implementation for User Story 7
 
-- [ ] T096 [P] [US7] Define radar presence, radar result, region room, proximity chat, and distance filter types in types/radar.ts
-- [ ] T097 [P] [US7] Implement radar and proximity chat REST methods in services/radar.service.ts
-- [ ] T098 [US7] Implement location permission and neighborhood/region discovery helper in features/radar/use-location-permission.ts
-- [ ] T099 [US7] Implement radar presence, filters, results, region room, and proximity chat hooks in features/radar/use-radar.ts
-- [ ] T100 [US7] Implement radar tab with map/list UI, type filter, distance filter, and state views in app/(tabs)/radar.tsx
-- [ ] T101 [US7] Ensure radar UI renders neighborhood/region areas and never individual user pins in features/radar/radar-map.tsx
-- [ ] T102 [US7] Implement create region room action from radar in features/radar/create-region-room.ts
-- [ ] T103 [US7] Implement temporary anonymous proximity chat modal in app/(modals)/proximity-chat.tsx
-- [ ] T104 [US7] Validate opt-in, no individual user pins, no exact locations, and radius behavior in specs/001-confessabr-social-mvp/quickstart.md
+- [X] T096 [P] [US7] Define radar presence, radar result, region room, proximity chat, and distance filter types in types/radar.ts
+- [X] T097 [P] [US7] Implement radar and proximity chat REST methods in services/radar.service.ts
+- [X] T098 [US7] Implement location permission and neighborhood/region discovery helper in features/radar/use-location-permission.ts
+- [X] T099 [US7] Implement radar presence, filters, results, region room, and proximity chat hooks in features/radar/use-radar.ts
+- [X] T100 [US7] Implement radar tab with map/list UI, type filter, distance filter, and state views in app/(tabs)/radar.tsx
+- [X] T101 [US7] Ensure radar UI renders neighborhood/region areas and never individual user pins in features/radar/radar-map.tsx
+- [X] T102 [US7] Implement create region room action from radar in features/radar/create-region-room.ts
+- [X] T103 [US7] Implement temporary anonymous proximity chat modal in app/(modals)/proximity-chat.tsx
+- [X] T104 [US7] Validate opt-in, no individual user pins, no exact locations, and radius behavior in specs/001-confessabr-social-mvp/quickstart.md
 
 **Checkpoint**: US7 independently functional with privacy constraints.
 
@@ -239,19 +239,19 @@
 
 ### Implementation for User Story 8
 
-- [ ] T105 [P] [US8] Define notification, device registration, read state, and preference types in types/notifications.ts
-- [ ] T106 [P] [US8] Implement notification REST methods in services/notifications.service.ts
-- [ ] T107 [US8] Implement push permission request flow after authentication and user action/consent with denied-permission state in utils/push-notifications.ts
-- [ ] T108 [US8] Implement Expo push token retrieval for authenticated users in utils/push-notifications.ts
-- [ ] T109 [US8] Register authenticated user's device push token with the API in services/notifications.service.ts
-- [ ] T110 [US8] Implement notification device registration and preference hooks in features/notifications/use-notifications.ts
-- [ ] T111 [US8] Implement notification history and mark-read logic in features/notifications/use-notification-history.ts
-- [ ] T112 [US8] Add notification preference controls to profile/settings screens in app/settings.tsx
-- [ ] T113 [US8] Implement notification history surface in app/(modals)/notifications.tsx
-- [ ] T114 [US8] Ensure notification rendering omits sender identity, exact location, payment internals, and moderation metadata in features/notifications/notification-item.tsx
-- [ ] T115 [US8] Validate push permission denied behavior in specs/001-confessabr-social-mvp/quickstart.md
-- [ ] T116 [US8] Validate authenticated device push token registration in specs/001-confessabr-social-mvp/quickstart.md
-- [ ] T117 [US8] Validate notification preference and payload privacy behavior in specs/001-confessabr-social-mvp/quickstart.md
+- [X] T105 [P] [US8] Define notification, device registration, read state, and preference types in types/notifications.ts
+- [X] T106 [P] [US8] Implement notification REST methods in services/notifications.service.ts
+- [X] T107 [US8] Implement push permission request flow after authentication and user action/consent with denied-permission state in utils/push-notifications.ts
+- [X] T108 [US8] Implement Expo push token retrieval for authenticated users in utils/push-notifications.ts
+- [X] T109 [US8] Register authenticated user's device push token with the API in services/notifications.service.ts
+- [X] T110 [US8] Implement notification device registration and preference hooks in features/notifications/use-notifications.ts
+- [X] T111 [US8] Implement notification history and mark-read logic in features/notifications/use-notification-history.ts
+- [X] T112 [US8] Add notification preference controls to profile/settings screens in app/settings.tsx
+- [X] T113 [US8] Implement notification history surface in app/(modals)/notifications.tsx
+- [X] T114 [US8] Ensure notification rendering omits sender identity, exact location, payment internals, and moderation metadata in features/notifications/notification-item.tsx
+- [X] T115 [US8] Validate push permission denied behavior in specs/001-confessabr-social-mvp/quickstart.md
+- [X] T116 [US8] Validate authenticated device push token registration in specs/001-confessabr-social-mvp/quickstart.md
+- [X] T117 [US8] Validate notification preference and payload privacy behavior in specs/001-confessabr-social-mvp/quickstart.md
 
 **Checkpoint**: US8 independently functional and privacy checked.
 

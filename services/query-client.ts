@@ -31,6 +31,13 @@ export const queryKeys = {
     detail: (pollId: string) => [...queryKeys.polls.all, pollId] as const,
     results: (pollId: string) => [...queryKeys.polls.detail(pollId), 'results'] as const,
   },
-  notifications: ['notifications'] as const,
-  radar: ['radar'] as const,
+  notifications: {
+    all: ['notifications'] as const,
+    history: () => [...queryKeys.notifications.all, 'history'] as const,
+  },
+  radar: {
+    all: ['radar'] as const,
+    results: (filters: { type: string; distanceMeters: number }) =>
+      [...queryKeys.radar.all, filters.type, filters.distanceMeters] as const,
+  },
 };

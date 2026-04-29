@@ -197,6 +197,41 @@ Manual verification checklist:
 5. Confirm checkout URLs and payment internals are not logged, shared, or placed
    into unrelated UI surfaces.
 
+### US7 Manual Verification - Radar And Proximity Chat
+
+1. Open the radar tab while signed in and confirm loading, empty, error, and
+   populated states render.
+2. Deny location permission and confirm the app shows denied-permission feedback
+   without opting the user into radar.
+3. Grant location permission from the radar opt-in action and confirm presence
+   updates through `/api/radar/presence`.
+4. Switch type and distance filters and confirm `/api/radar` refreshes with the
+   selected radius.
+5. Inspect the radar map/list and confirm it renders only neighborhood or region
+   areas, aggregate counts, and room summaries. It must not render individual
+   user pins, exact latitude/longitude text, or private identifiers.
+6. Create or enter a region room from a radar region and confirm backend-owned
+   room eligibility and radius errors surface.
+7. Start a temporary proximity chat and confirm the modal receives only region
+   ID, topic, and radius, never exact location coordinates.
+
+### US8 Manual Verification - Notifications
+
+1. Open settings and toggle each notification preference: new messages, poll
+   invites, poll results, and payment confirmations.
+2. Tap the push registration button after signing in and confirm permission is
+   requested only after this user action.
+3. Deny push permission and confirm the app remains usable and reports the
+   denied/unavailable state clearly.
+4. Grant push permission on a physical device and confirm the Expo push token is
+   registered through `/api/notifications/devices`.
+5. Trigger message, poll invitation, poll result, and payment confirmation
+   events and confirm history appears in `/api/notifications`.
+6. Mark a notification as read and confirm the history refreshes.
+7. Inspect each notification item and push payload shown in-app to confirm it
+   omits sender identity, exact location, payment internals, private moderation
+   metadata, and raw sensitive IDs.
+
 ## 7. Constitution Checks Before Implementation Completion
 
 - No manual `StyleSheet` usage in new ConfessaBR code.

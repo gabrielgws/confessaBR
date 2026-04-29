@@ -49,6 +49,9 @@ export default function HomeScreen() {
         <Link href={'/(modals)/moderation-queue' as Href} asChild>
           <Button title="Fila de moderacao" variant="ghost" />
         </Link>
+        <Link href={'/(modals)/notifications' as Href} asChild>
+          <Button title="Notificacoes" variant="ghost" />
+        </Link>
       </View>
     </ScrollView>
   );
