@@ -1,6 +1,5 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { QueryClientProvider } from '@tanstack/react-query';
-import * as Notifications from 'expo-notifications';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
@@ -10,10 +9,13 @@ import '../global.css';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { queryClient } from '@/services/query-client';
 import { useAuthStore } from '@/store/auth.store';
-import { configureNotificationHandling } from '@/utils/push-notifications';
+import {
+  addNotificationLifecycleListeners,
+  configureNotificationHandling,
+} from '@/utils/push-notifications';
 
 export const unstable_settings = {
-  anchor: '(tabs)',
+  initialRouteName: 'index',
 };
 
 export default function RootLayout() {
@@ -23,20 +25,21 @@ export default function RootLayout() {
   useEffect(() => {
     configureNotificationHandling();
     void bootstrap();
-
-    const receivedSubscription = Notifications.addNotificationReceivedListener(() => {});
-    const responseSubscription = Notifications.addNotificationResponseReceivedListener(() => {});
+    const removeNotificationListeners = addNotificationLifecycleListeners();
 
     return () => {
-      receivedSubscription.remove();
-      responseSubscription.remove();
+      removeNotificationListeners();
     };
   }, [bootstrap]);
 
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Stack>
+        <Stack
+          initialRouteName="index"
+          screenOptions={{
+            contentStyle: { backgroundColor: '#ffffff' },
+          }}>
           <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen name="(auth)" options={{ headerShown: false }} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
