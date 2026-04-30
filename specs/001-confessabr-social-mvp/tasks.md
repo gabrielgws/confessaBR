@@ -261,18 +261,18 @@
 
 **Purpose**: Final validation, cleanup, and constitution checks across all implemented increments.
 
-- [ ] T118 [P] Update README with setup, environment, and run instructions for ConfessaBR MVP in README.md
-- [ ] T119 [P] Update implementation notes and current plan references in AGENTS.md
-- [ ] T120 Verify no manual StyleSheet usage exists in app/, components/, features/, hooks/, store/, types/, utils/, and services/ via specs/001-confessabr-social-mvp/quickstart.md
-- [ ] T121 Verify no direct API calls exist inside app/ or components/ via specs/001-confessabr-social-mvp/quickstart.md
-- [ ] T122 Verify tokens are stored only through SecureStore helper in utils/secure-token.ts
-- [ ] T123 Verify no sensitive identity, payment, moderation, or exact location data is logged through utils/privacy-log.ts
-- [ ] T124 Run lint and resolve reported issues in package.json
-- [ ] T125 Create post-implementation usability test script for SC-001, SC-007, and SC-008 in specs/001-confessabr-social-mvp/usability-test.md
-- [ ] T126 Execute post-implementation usability validation with participants or a documented simulated session in specs/001-confessabr-social-mvp/usability-test.md
-- [ ] T127 Record completion-rate results for account/visitor, room, and poll flows in specs/001-confessabr-social-mvp/usability-test.md
-- [ ] T128 Validate post-implementation basic screen responsiveness: useful feedback within 1s for primary actions and smooth list/radar interactions on a representative device or simulator in specs/001-confessabr-social-mvp/quickstart.md
-- [ ] T129 Run full manual quickstart validation and record completion notes in specs/001-confessabr-social-mvp/quickstart.md
+- [X] T118 [P] Update README with setup, environment, and run instructions for ConfessaBR MVP in README.md
+- [X] T119 [P] Update implementation notes and current plan references in AGENTS.md
+- [X] T120 Verify no manual StyleSheet usage exists in app/, components/, features/, hooks/, store/, types/, utils/, and services/ via specs/001-confessabr-social-mvp/quickstart.md
+- [X] T121 Verify no direct API calls exist inside app/ or components/ via specs/001-confessabr-social-mvp/quickstart.md
+- [X] T122 Verify tokens are stored only through SecureStore helper in utils/secure-token.ts
+- [X] T123 Verify no sensitive identity, payment, moderation, or exact location data is logged through utils/privacy-log.ts
+- [X] T124 Run lint and resolve reported issues in package.json
+- [X] T125 Create post-implementation usability test script for SC-001, SC-007, and SC-008 in specs/001-confessabr-social-mvp/usability-test.md
+- [X] T126 Execute post-implementation usability validation with participants or a documented simulated session in specs/001-confessabr-social-mvp/usability-test.md
+- [X] T127 Record completion-rate results for account/visitor, room, and poll flows in specs/001-confessabr-social-mvp/usability-test.md
+- [X] T128 Validate post-implementation basic screen responsiveness: useful feedback within 1s for primary actions and smooth list/radar interactions on a representative device or simulator in specs/001-confessabr-social-mvp/quickstart.md
+- [X] T129 Run full manual quickstart validation and record completion notes in specs/001-confessabr-social-mvp/quickstart.md
 
 ---
 

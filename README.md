@@ -1,66 +1,85 @@
-# Welcome to your Expo app 👋
+# ConfessaBR Mobile MVP
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+ConfessaBR is an Expo Router mobile app for anonymous social flows: account and
+visitor entry, profile/privacy preferences, anonymous inbox, rooms, positive
+polls, reports/moderation, paid reveal capabilities, radar discovery, proximity
+chat, and privacy-safe notifications.
 
-## ConfessaBR development rules
+The current feature plan lives in
+`specs/001-confessabr-social-mvp/plan.md`, with the implementation checklist in
+`specs/001-confessabr-social-mvp/tasks.md`.
 
-This repository follows the ConfessaBR mobile constitution in
-`.specify/memory/constitution.md` and the agent guidance in `CODEX.md`.
+## Stack
 
-- Use Expo, React Native, TypeScript, Expo Router, NativeWind, Zustand,
-  TanStack Query, Axios, Expo SecureStore, Expo Location, and React Native Maps
-  where applicable.
-- Keep API calls in `services/` and reusable logic in hooks, stores, or feature
-  modules. Do not call the API directly from UI components.
-- Use NativeWind for styling. Do not add manual `StyleSheet` usage.
-- Store authentication tokens only in Expo SecureStore.
-- Treat the Laravel API as authoritative for validation, authorization,
-  payments, moderation, sender reveal, voting, and proximity access.
-- Provide loading, error, empty, and success states for every user-facing flow.
+- Expo SDK 54, React Native 0.81, React 19, TypeScript strict mode
+- Expo Router for navigation
+- NativeWind for styling
+- TanStack Query for server state
+- Zustand for session/UI state
+- Axios through `services/api.ts`
+- Expo SecureStore for auth tokens
+- Expo Location, React Native Maps, Expo Notifications, and Expo Device
 
-## Get started
+## Setup
 
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+Install dependencies from the repository root:
 
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+The API base URL defaults to `/api`. To target a remote Laravel API, set
+`expo.extra.apiBaseUrl` in `app.json` or the relevant Expo config before
+building/running.
 
-## Learn more
+## Run
 
-To learn more about developing your project with Expo, look at the following resources:
+Start Metro:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npm run start
+```
 
-## Join the community
+Open a platform target:
 
-Join our community of developers creating universal apps.
+```bash
+npm run android
+npm run ios
+npm run web
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Validate
+
+Run static checks:
+
+```bash
+npx tsc --noEmit
+npm run lint
+```
+
+Manual validation steps are documented in
+`specs/001-confessabr-social-mvp/quickstart.md`.
+
+## Development Rules
+
+- Keep all API calls in `services/`.
+- Route and component files should consume hooks/feature logic, not raw API
+  clients.
+- Use NativeWind classes for styling; do not add manual `StyleSheet` usage.
+- Store auth tokens only through `utils/secure-token.ts`.
+- Treat the Laravel API as authoritative for validation, permissions,
+  moderation, payments, sender reveal, voting, consent, and proximity.
+- Radar must remain neighborhood/region-level only: no exact location display
+  and no individual user pins.
+- Notification UI must omit sender identity, exact location, payment internals,
+  and private moderation metadata.
+
+## Source Layout
+
+- `app/`: Expo Router screens, tabs, modals, and detail routes
+- `features/`: feature hooks and orchestration
+- `services/`: REST API clients and query client
+- `components/`: reusable UI and layout primitives
+- `store/`: Zustand state
+- `types/`: shared TypeScript contracts
+- `utils/`: SecureStore, push, privacy, and shared helpers

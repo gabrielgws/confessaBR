@@ -234,9 +234,54 @@ Manual verification checklist:
 
 ## 7. Constitution Checks Before Implementation Completion
 
-- No manual `StyleSheet` usage in new ConfessaBR code.
-- No direct API calls from UI components.
-- No business rule exists only in frontend logic.
+- No manual `StyleSheet` usage in `app/`, `components/`, `features/`, `hooks/`,
+  `store/`, `types/`, `utils/`, or `services/`.
+- No direct API calls from UI components; Axios is centralized in
+  `services/api.ts`.
+- Tokens are stored only through `utils/secure-token.ts`.
 - No sensitive identity, payment, moderation, or exact location data appears in
   logs, shared payloads, notifications, or navigation params.
 - Context7 is used when consulting library documentation for implementation.
+
+### Phase 11 Validation Notes
+
+Static checks executed on 2026-04-29:
+
+```bash
+npx tsc --noEmit
+npm run lint
+```
+
+Cross-cutting scans to run from the repository root:
+
+```powershell
+Get-ChildItem -Path app,components,features,hooks,store,types,utils,services -Recurse -Include *.ts,*.tsx |
+  Select-String -Pattern 'StyleSheet'
+
+Get-ChildItem -Path app,components -Recurse -Include *.ts,*.tsx |
+  Select-String -Pattern 'axios|fetch\(|api\.'
+
+Get-ChildItem -Path app,components,features,hooks,store,types,utils,services -Recurse -Include *.ts,*.tsx |
+  Select-String -Pattern 'SecureStore'
+
+Get-ChildItem -Path app,components,features,hooks,store,types,utils,services -Recurse -Include *.ts,*.tsx |
+  Select-String -Pattern 'console\.|privacyLog|logPrivacyEvent'
+```
+
+Recorded completion:
+
+- TypeScript and Expo lint pass.
+- Manual `StyleSheet` usage was removed from remaining starter components.
+- UI layers do not import Axios or call `fetch`.
+- `SecureStore` appears only in `utils/secure-token.ts`.
+- Privacy logging remains centralized in `utils/privacy-log.ts`; no raw
+  location, sender identity, payment internals, moderation metadata, or token
+  logging was added.
+- Basic responsiveness was validated by implementation review: primary actions
+  mutate through TanStack Query with immediate disabled/loading states, and list
+  and radar screens render bounded cards/filters with loading/error/empty
+  states. Device-level 60 fps validation remains a release-candidate manual
+  check.
+- Full manual quickstart validation is documented as ready to execute against a
+  connected Laravel staging API. A simulated usability pass is recorded in
+  `specs/001-confessabr-social-mvp/usability-test.md`.
